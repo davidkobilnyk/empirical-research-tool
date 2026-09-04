@@ -75,6 +75,26 @@ channel that is unconfigured or that raises is recorded in the coverage note as
 unavailable rather than dropped, because a retrieval failure that degrades
 silently becomes a permanent evidence gap (spec 57).
 
+### Retrieval and integrity are separate phases, on purpose
+
+Retrieval needs connector access; the spec 33 integrity check needs
+`api.crossref.org`. These are not necessarily reachable from the same place — in
+the environment this was built in, the connector kernel cannot reach Crossref at
+all. Nesting the check inside retrieval therefore made all 69 lookups fail and
+report `unknown`: honest, but useless.
+
+```bash
+python stage0/retrieve.py --integrity runs/<run-dir>   # where Crossref is reachable
+```
+
+`run_integrity` refuses to write a result when *every* lookup failed, rather than
+recording a run in which nothing could be verified as though nothing were wrong.
+Four statuses are distinguished, and the distinctions carry weight: `clean`,
+`corrected` (a corrigendum is not a retraction), `retracted` (a run citing one
+**fails** the audit), and `not in crossref` — a valid DOI from another
+registration agency, which is a coverage limit rather than a defect in the
+source. Anything genuinely unverifiable stays `unknown`, never `clean`.
+
 `tests/test_replay.py` pins the parsers to the payloads in `records/`. The
 connectors are not reproducible, so those payloads are the fixture and the
 counts are the contract — a failure means a parser changed, not that the

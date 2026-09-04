@@ -132,6 +132,11 @@ def integrity_check(dois, email=None, cap=None):
         rs = ident.retraction_status(d, email=email)
         if rs is None:
             out[d] = {"status": "unknown", "reason": "lookup failed"}
+        elif rs.get("registry") == "not_in_crossref":
+            # A valid DOI from another registration agency (DataCite covers arXiv,
+            # Zenodo, PsychArchives). Crossref cannot speak to its retraction
+            # status, so this is a coverage limit, not a defect in the source.
+            out[d] = {"status": "not in crossref", "reason": "another registration agency"}
         elif rs["retracted"]:
             out[d] = {"status": "retracted", "notices": rs["notices"]}
         elif rs["corrected"]:
@@ -238,8 +243,43 @@ def slug(s, n=40):
 
 
 # ------------------------------------------------------------- entry points
+def run_integrity(rundir, email=None, cap=None):
+    """spec 33, as a separate phase over a completed run's sources.json.
+
+    Kept separate from retrieval on purpose. Retrieval needs connector access;
+    this needs api.crossref.org, and the two are not necessarily reachable from
+    the same place — in the environment this was built in they are not. Nesting
+    the check inside retrieval made every lookup fail and report 'unknown',
+    which is honest but useless. Run this where Crossref is reachable.
+    """
+    with open(os.path.join(rundir, "sources.json")) as fh:
+        sources = json.load(fh)
+    with open(os.path.join(rundir, "coverage.json")) as fh:
+        cov = json.load(fh)
+    dois = [s["doi_normalised"] for s in sources if s.get("doi_normalised")]
+    integrity = integrity_check(dois, email=email, cap=cap)
+
+    statuses = {v["status"] for v in integrity.values()}
+    if statuses == {"unknown"} and dois:
+        raise RuntimeError(
+            f"all {len(dois)} lookups failed — check that api.crossref.org is reachable "
+            "from this kernel before treating this as a fact about the DOIs")
+
+    cov["integrity"] = integrity
+    with open(os.path.join(rundir, "coverage.json"), "w") as fh:
+        json.dump(cov, fh, indent=1)
+    note = coverage_note(cov["question"], cov["queries"], cov["stats"], integrity,
+                         sorted(cov["stats"]["per_channel_arm"]), {})
+    with open(os.path.join(rundir, "coverage-note.md"), "w") as fh:
+        fh.write(note)
+    tally = {}
+    for v in integrity.values():
+        tally[v["status"]] = tally.get(v["status"], 0) + 1
+    return integrity, tally
+
+
 def run_live(question, mcp, servers, disconfirming=None, limits=None, email=None,
-             outdir=None, check_integrity=True, integrity_cap=None):
+             outdir=None, check_integrity=False, integrity_cap=None):
     """servers: {'fasttrack': '<server name>', ...}. Missing or failing channels are
     recorded as unavailable rather than skipped silently (specs 47, 57)."""
     queries = query_sets(question, disconfirming)
@@ -309,8 +349,17 @@ if __name__ == "__main__":
                     help="re-parse dated connector payloads from records/")
     ap.add_argument("--check-integrity", action="store_true",
                     help="run the spec 33 existence and retraction check (needs network)")
+    ap.add_argument("--integrity", metavar="RUNDIR",
+                    help="run the spec 33 check over a completed run and update its coverage note")
     ap.add_argument("--outdir")
     a = ap.parse_args()
+    if a.integrity:
+        integrity, tally = run_integrity(a.integrity)
+        print(json.dumps(tally, indent=1))
+        for d, v in integrity.items():
+            if v["status"] in ("retracted", "unknown"):
+                print(v["status"], d)
+        sys.exit(0)
     if not a.replay:
         sys.exit("live retrieval needs the MCP-capable kernel: import this module and call "
                  "run_live(question, mcp, servers). Use --replay for the offline path.")

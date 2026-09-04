@@ -4,6 +4,7 @@ Stdlib + Crossref only. Loaded by the doi-source-identity skill.
 """
 import re
 import json
+import time
 import unicodedata
 import urllib.parse
 import urllib.request
@@ -11,6 +12,7 @@ import urllib.request
 DOI_PATTERN = r"10\.\d{4,9}/\S+"
 PREFIX_PATTERN = r"^(?:https?://(?:dx\.)?doi\.org/|doi:\s*|DOI:\s*)"
 TRAILING_PUNCT = ".,;:'\"\u201d\u2019!?"
+CROSSREF_PACE = {"last": 0.0, "interval": 0.25}
 
 
 def normalize_doi(s):
@@ -107,19 +109,94 @@ def dedupe_sources(records, doi_key="doi", title_key="title"):
     return unique, index
 
 
-def crossref_record(doi, email=None, timeout=30):
-    """Full Crossref message for a DOI, or None if it could not be fetched."""
+def crossref_record(doi, email=None, timeout=30, attempts=3):
+    """Full Crossref message for a DOI, or None if it could not be fetched.
+
+    Paced and identified: Crossref advertises a 5 requests/second limit via
+    x-rate-limit-limit, so calls are spaced and 429/503 is retried honouring
+    Retry-After. A contact address, where available, goes in both the User-Agent
+    and mailto as the service asks.
+
+    Note on where this runs: api.crossref.org is not reachable from every
+    kernel. If every lookup returns None, check reachability before concluding
+    anything about the DOIs -- an unreachable host and an absent record must not
+    look the same.
+    """
     d = normalize_doi(doi)
     if not d:
         return None
     u = "https://api.crossref.org/works/" + urllib.parse.quote(d)
     if email:
         u += "?mailto=" + urllib.parse.quote(email)
-    try:
-        with urllib.request.urlopen(u, timeout=timeout) as fh:
-            return json.load(fh)["message"]
-    except Exception:
-        return None
+    ua = "doi-source-identity/0.1"
+    if email:
+        ua += " (mailto:" + email + ")"
+    for attempt in range(attempts):
+        gap = CROSSREF_PACE["interval"] - (time.time() - CROSSREF_PACE["last"])
+        if gap > 0:
+            time.sleep(gap)
+        CROSSREF_PACE["last"] = time.time()
+        try:
+            req = urllib.request.Request(u, headers={"Accept": "application/json",
+                                                     "User-Agent": ua})
+            with urllib.request.urlopen(req, timeout=timeout) as fh:
+                return json.load(fh)["message"]
+        except urllib.error.HTTPError as e:
+            if e.code == 404:
+                return None
+            if e.code in (429, 500, 502, 503) and attempt < attempts - 1:
+                wait = e.headers.get("retry-after")
+                time.sleep(float(wait) if wait and str(wait).isdigit() else 2 ** attempt)
+                continue
+            return None
+        except Exception:
+            if attempt < attempts - 1:
+                time.sleep(2 ** attempt)
+                continue
+            return None
+    return None
+
+
+def crossref_status(doi, email=None, timeout=30, attempts=3):
+    """('found', message) | ('not_in_crossref', None) | ('error', reason).
+
+    Distinguishing these three matters: a DOI registered with another agency
+    (DataCite covers arXiv, Zenodo, PsychArchives and most repository DOIs) is a
+    perfectly valid DOI that Crossref simply does not hold. Collapsing it into
+    the same bucket as a failed lookup makes a permanent flag out of a
+    registration detail.
+    """
+    d = normalize_doi(doi)
+    if not d:
+        return ("error", "not a DOI")
+    u = "https://api.crossref.org/works/" + urllib.parse.quote(d)
+    if email:
+        u += "?mailto=" + urllib.parse.quote(email)
+    ua = "doi-source-identity/0.1" + (" (mailto:" + email + ")" if email else "")
+    for attempt in range(attempts):
+        gap = CROSSREF_PACE["interval"] - (time.time() - CROSSREF_PACE["last"])
+        if gap > 0:
+            time.sleep(gap)
+        CROSSREF_PACE["last"] = time.time()
+        try:
+            req = urllib.request.Request(u, headers={"Accept": "application/json",
+                                                     "User-Agent": ua})
+            with urllib.request.urlopen(req, timeout=timeout) as fh:
+                return ("found", json.load(fh)["message"])
+        except urllib.error.HTTPError as e:
+            if e.code == 404:
+                return ("not_in_crossref", None)
+            if e.code in (429, 500, 502, 503) and attempt < attempts - 1:
+                wait = e.headers.get("retry-after")
+                time.sleep(float(wait) if wait and str(wait).isdigit() else 2 ** attempt)
+                continue
+            return ("error", "HTTP " + str(e.code))
+        except Exception as e:
+            if attempt < attempts - 1:
+                time.sleep(2 ** attempt)
+                continue
+            return ("error", type(e).__name__)
+    return ("error", "exhausted attempts")
 
 
 def retraction_status(doi, email=None):
@@ -128,11 +205,12 @@ def retraction_status(doi, email=None):
     {'retracted': bool, 'corrected': bool, 'notices': [...]}, or None when the
     record could not be fetched -- unknown is not the same as clean.
     """
-    m = crossref_record(doi, email=email)
-    if m is None:
-        return None
+    state, m = crossref_status(doi, email=email)
+    if state != "found":
+        return None if state == "error" else {"retracted": False, "corrected": False,
+                                              "notices": [], "registry": "not_in_crossref"}
     notices = [{"type": u.get("type"), "source": u.get("source"), "doi": u.get("DOI")}
                for u in (m.get("updated-by") or [])]
     return {"retracted": any(n["type"] == "retraction" for n in notices),
             "corrected": any(n["type"] == "correction" for n in notices),
-            "notices": notices}
+            "notices": notices, "registry": "crossref"}
