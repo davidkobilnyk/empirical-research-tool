@@ -1,0 +1,194 @@
+{
+ "GRADE_intro": {
+  "doi": "10.1136/bmj.39489.470347.ad",
+  "title": "GRADE: an emerging consensus on rating quality of evidence and strength of recommendations",
+  "first": "Guyatt",
+  "nauth": 7,
+  "year": 2008,
+  "venue": "BMJ"
+ },
+ "GRADE_imprecision": {
+  "doi": "10.1016/j.jclinepi.2011.01.012",
+  "title": "GRADE guidelines 6. Rating the quality of evidence\u2014imprecision",
+  "first": "Guyatt",
+  "nauth": 20,
+  "year": 2011,
+  "venue": "Journal of Clinical Epidemiology"
+ },
+ "GRADE_inconsistency": {
+  "doi": "10.1016/j.jclinepi.2011.03.017",
+  "title": "GRADE guidelines: 7. Rating the quality of evidence\u2014inconsistency",
+  "first": "Guyatt",
+  "nauth": 17,
+  "year": 2011,
+  "venue": "Journal of Clinical Epidemiology"
+ },
+ "GRADE_pubbias": {
+  "doi": "10.1016/j.jclinepi.2011.01.011",
+  "title": "GRADE guidelines: 5. Rating the quality of evidence\u2014publication bias",
+  "first": "Guyatt",
+  "nauth": 15,
+  "year": 2011,
+  "venue": "Journal of Clinical Epidemiology"
+ },
+ "RoB2": {
+  "doi": "10.1136/bmj.l4898",
+  "title": "RoB 2: a revised tool for assessing risk of bias in randomised trials",
+  "first": "Sterne",
+  "nauth": 28,
+  "year": 2019,
+  "venue": "BMJ"
+ },
+ "ROBINS_I": {
+  "doi": "10.1136/bmj.i4919",
+  "title": "ROBINS-I: a tool for assessing risk of bias in non-randomised studies of interventions",
+  "first": "Sterne",
+  "nauth": 35,
+  "year": 2016,
+  "venue": "BMJ"
+ },
+ "ADEMP": {
+  "doi": "10.1002/sim.8086",
+  "title": "Using simulation studies to evaluate statistical methods",
+  "first": "Morris",
+  "nauth": 3,
+  "year": 2019,
+  "venue": "Statistics in Medicine"
+ },
+ "TRISS": {
+  "doi": "10.1111/2041-210x.14415",
+  "title": "Transparent reporting items for simulation studies evaluating statistical methods: Foundations for reproducibility and reliability",
+  "first": "Williams",
+  "nauth": 7,
+  "year": 2024,
+  "venue": "Methods in Ecology and Evolution"
+ },
+ "siepe_simtemplate": {
+  "doi": "10.1037/met0000695",
+  "title": "Simulation studies for methodological research in psychology: A standardized template for planning, preregistration, and reporting.",
+  "first": "Siepe",
+  "nauth": 6,
+  "year": 2024,
+  "venue": "Psychological Methods"
+ },
+ "neutral_comparison": {
+  "doi": "10.1186/s12874-017-0417-2",
+  "title": "Towards evidence-based computational statistics: lessons from clinical research on the role and design of real-data benchmark studies",
+  "first": "Boulesteix",
+  "nauth": 3,
+  "year": 2017,
+  "venue": "BMC Medical Research Methodology"
+ },
+ "multiverse": {
+  "doi": "10.1177/1745691616658637",
+  "title": "Increasing Transparency Through a Multiverse Analysis",
+  "first": "Steegen",
+  "nauth": 4,
+  "year": 2016,
+  "venue": "Perspectives on Psychological Science"
+ },
+ "spec_curve": {
+  "doi": "10.1038/s41562-020-0912-z",
+  "title": "Specification curve analysis",
+  "first": "Simonsohn",
+  "nauth": 3,
+  "year": 2020,
+  "venue": "Nature Human Behaviour"
+ },
+ "vibration_effects": {
+  "doi": "10.1016/j.jclinepi.2015.05.029",
+  "title": "Assessment of vibration of effects due to model specification can demonstrate the instability of observational associations",
+  "first": "Patel",
+  "nauth": 3,
+  "year": 2015,
+  "venue": "Journal of Clinical Epidemiology"
+ },
+ "pred_interval": {
+  "doi": "10.1136/bmjopen-2015-010247",
+  "title": "Plea for routinely presenting prediction intervals in meta-analysis",
+  "first": "IntHout",
+  "nauth": 4,
+  "year": 2016,
+  "venue": "BMJ Open"
+ },
+ "bias_correction_cmp": {
+  "doi": "10.1177/2515245919847196",
+  "title": "Correcting for Bias in Psychology: A Comparison of Meta-Analytic Methods",
+  "first": "Carter",
+  "nauth": 4,
+  "year": 2019,
+  "venue": "Advances in Methods and Practices in Psychological Science"
+ },
+ "OSC2015": {
+  "doi": "10.1126/science.aac4716",
+  "title": "Estimating the reproducibility of psychological science",
+  "first": "",
+  "nauth": 0,
+  "year": 2015,
+  "venue": "Science"
+ },
+ "camerer2018": {
+  "doi": "10.1038/s41562-018-0399-z",
+  "title": "Evaluating the replicability of social science experiments in Nature and Science between 2010 and 2015",
+  "first": "Camerer",
+  "nauth": 24,
+  "year": 2018,
+  "venue": "Nature Human Behaviour"
+ },
+ "nosek_preregistration": {
+  "doi": "10.1016/j.tics.2019.07.009",
+  "title": "Preregistration Is Hard, And Worthwhile",
+  "first": "Nosek",
+  "nauth": 8,
+  "year": 2019,
+  "venue": "Trends in Cognitive Sciences"
+ },
+ "gelman_loken": {
+  "doi": "10.1511/2014.111.460",
+  "title": "The Statistical Crisis in Science",
+  "first": "Gelman",
+  "nauth": 2,
+  "year": 2014,
+  "venue": "American Scientist"
+ },
+ "TypeM": {
+  "doi": "10.1177/1745691614551642",
+  "title": "Beyond Power Calculations",
+  "first": "Gelman",
+  "nauth": 2,
+  "year": 2014,
+  "venue": "Perspectives on Psychological Science"
+ },
+ "AGREE_II": {
+  "doi": "10.1503/cmaj.090449",
+  "title": "AGREE II: advancing guideline development, reporting and evaluation in health care",
+  "first": "Brouwers",
+  "nauth": 13,
+  "year": 2010,
+  "venue": "Canadian Medical Association Journal"
+ },
+ "Delphi": {
+  "doi": "10.2105/ajph.74.9.979",
+  "title": "Consensus methods: characteristics and guidelines for use.",
+  "first": "Fink",
+  "nauth": 4,
+  "year": 1984,
+  "venue": "American Journal of Public Health"
+ },
+ "CERQual": {
+  "doi": "10.1186/s13012-017-0688-3",
+  "title": "Applying GRADE-CERQual to qualitative evidence synthesis findings: introduction to the series",
+  "first": "Lewin",
+  "nauth": 13,
+  "year": 2018,
+  "venue": "Implementation Science"
+ },
+ "many_analysts": {
+  "doi": "10.1177/2515245917747646",
+  "title": "Many Analysts, One Data Set: Making Transparent How Variations in Analytic Choices Affect Results",
+  "first": "Silberzahn",
+  "nauth": 65,
+  "year": 2018,
+  "venue": "Advances in Methods and Practices in Psychological Science"
+ }
+}

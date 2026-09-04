@@ -1,0 +1,10 @@
+# Re-fetchable in ~20s from api.labs.crossref.org — never committed
+retractionwatch.csv
+# Source PDFs: cache extracted text instead (1/20th the size, same audit value)
+*.pdf
+# Derived intermediates; regenerate from records/ with the build scripts
+handoff/
+*.db-journal
+__pycache__/
+.venv/
+.DS_Store
