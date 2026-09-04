@@ -277,11 +277,17 @@ def link(sources, meta, D):
     return sources, works, evidence
 
 
-def summarise(sources, works, evidence, enrich_counts):
+def summarise(sources, works, evidence, enrich_counts, mode="network"):
+    """`mode` is recorded because offline linkage is strictly weaker, not merely
+    faster: without registry enrichment there are no canonical titles, no authors
+    and no relations, so links that exist are not found. An offline result
+    overwriting a networked one in a run directory, with nothing saying so, is
+    exactly the silent degradation spec 57 forbids."""
     multi = {w: v for w, v in works.items() if len(v["records"]) > 1}
     unlinkable = [s["record_id"] for s in sources
                   if not s.get("doi_normalised") and not s.get("title_canonical")]
     return {
+        "enrichment_mode": mode,
         "records": len(sources),
         "works": len(works),
         "redundant_records": len(sources) - len(works),
@@ -304,7 +310,7 @@ def run_link(rundir, email=None, net=True):
         sources = json.load(fh)
     meta, counts = enrich(sources, D, email=email, net=net)
     sources, works, evidence = link(sources, meta, D)
-    stats = summarise(sources, works, evidence, counts)
+    stats = summarise(sources, works, evidence, counts, mode="network" if net else "offline")
 
     with open(os.path.join(rundir, "sources.json"), "w") as fh:
         json.dump(sources, fh, indent=1)
@@ -325,7 +331,11 @@ def run_link(rundir, email=None, net=True):
     spec.loader.exec_module(R)
     note = R.coverage_note(cov["question"], cov["queries"], cov["stats"],
                            cov.get("integrity") or {},
-                           sorted(cov["stats"]["per_channel_arm"]), {}, linkage=stats)
+                           # data files outlive code renames: runs written before
+                           # "arm" became "query set" carry the old key
+                           sorted(cov["stats"].get("per_channel_query_set")
+                                  or cov["stats"].get("per_channel_arm") or {}),
+                           {}, linkage=stats)
     with open(os.path.join(rundir, "coverage-note.md"), "w") as fh:
         fh.write(note)
     return stats, works, evidence

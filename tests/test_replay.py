@@ -16,11 +16,11 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PAYLOADS = os.path.join(ROOT, "records", "stage0-retrieval-raw-2026-09-04.json")
 
 # Measured 2026-09-04 on: "Does pre-registration of studies predict higher
-# replication rates?" with the disconfirming arm of spec 16, at each channel's
+# replication rates?" with the disconfirming set of spec 16, at each channel's
 # default limit.
 EXPECTED = {"records_returned": 107, "unique_sources": 93, "with_doi": 78,
             "multi_channel": 2}
-EXPECTED_PER_ARM = {"fasttrack/sup": 20, "fasttrack/dis": 18,
+EXPECTED_PER_QUERY_SET = {"fasttrack/sup": 20, "fasttrack/dis": 18,
                     "scholargw/sup": 15, "scholargw/dis": 14,
                     "scispace/sup": 10, "scispace/dis": 10,
                     "consensus/sup": 10, "consensus/dis": 10}
@@ -36,16 +36,16 @@ def load(path, name):
 def main():
     r = load(os.path.join(ROOT, "stage0", "retrieve.py"), "retrieve")
     raw = json.load(open(PAYLOADS))
-    per_arm = {k: r.CHANNELS[k.partition("/")[0]][2](v) for k, v in raw.items()
+    per_set = {k: r.CHANNELS[k.partition("/")[0]][2](v) for k, v in raw.items()
                if k.partition("/")[0] in r.CHANNELS}
-    unique, stats = r.collate(per_arm)
+    unique, stats = r.collate(per_set)
 
     failures = []
     for k, want in EXPECTED.items():
         if stats[k] != want:
             failures.append(f"{k}: expected {want}, got {stats[k]}")
-    if stats["per_channel_arm"] != EXPECTED_PER_ARM:
-        failures.append(f"per-channel yield changed: {stats['per_channel_arm']}")
+    if stats["per_channel_query_set"] != EXPECTED_PER_QUERY_SET:
+        failures.append(f"per-channel yield changed: {stats['per_channel_query_set']}")
 
     # A source merged by title from a channel that returns no DOIs must still
     # carry its DOI, or it silently escapes the spec 33 integrity check.

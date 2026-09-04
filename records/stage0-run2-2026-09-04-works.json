@@ -755,15 +755,15 @@
     "scholargw"
    ]
   },
-  "wrk_a77ebbe6496c2291": {
-   "work_id": "wrk_a77ebbe6496c2291",
+  "wrk_651a789f8cfff6cb": {
+   "work_id": "wrk_651a789f8cfff6cb",
    "records": [
-    "rec_880cc5929c580fe5"
+    "rec_d2a600397ff4fb80"
    ],
    "dois": [
-    "10.1002/pds.5079@10.1002/(issn)1099-1557.rwe-collection"
+    "10.1002/icd.2315"
    ],
-   "title": null,
+   "title": "adapting open science and pre registration to longitudinal research",
    "access_levels": [
     "extracted fields"
    ],
@@ -780,6 +780,22 @@
     "10.1002/jrsm.1594"
    ],
    "title": "robust bayesian meta analysis model averaging across complementary publication bias adjustment methods",
+   "access_levels": [
+    "extracted fields"
+   ],
+   "channels": [
+    "scholargw"
+   ]
+  },
+  "wrk_a77ebbe6496c2291": {
+   "work_id": "wrk_a77ebbe6496c2291",
+   "records": [
+    "rec_880cc5929c580fe5"
+   ],
+   "dois": [
+    "10.1002/pds.5079@10.1002/(issn)1099-1557.rwe-collection"
+   ],
+   "title": null,
    "access_levels": [
     "extracted fields"
    ],
@@ -819,38 +835,6 @@
     "scholargw"
    ]
   },
-  "wrk_651a789f8cfff6cb": {
-   "work_id": "wrk_651a789f8cfff6cb",
-   "records": [
-    "rec_d2a600397ff4fb80"
-   ],
-   "dois": [
-    "10.1002/icd.2315"
-   ],
-   "title": "adapting open science and pre registration to longitudinal research",
-   "access_levels": [
-    "extracted fields"
-   ],
-   "channels": [
-    "scholargw"
-   ]
-  },
-  "wrk_3347aad230f2212c": {
-   "work_id": "wrk_3347aad230f2212c",
-   "records": [
-    "rec_5718bac2b94af198"
-   ],
-   "dois": [
-    "10.1002/leap.1250"
-   ],
-   "title": "reproducibility crisis the scientific method and the quality of published studies untangling the knot",
-   "access_levels": [
-    "extracted fields"
-   ],
-   "channels": [
-    "scholargw"
-   ]
-  },
   "wrk_3102719ed620d0ca": {
    "work_id": "wrk_3102719ed620d0ca",
    "records": [
@@ -867,15 +851,15 @@
     "scholargw"
    ]
   },
-  "wrk_32ce5f7229590ced": {
-   "work_id": "wrk_32ce5f7229590ced",
+  "wrk_3388108035f84224": {
+   "work_id": "wrk_3388108035f84224",
    "records": [
-    "rec_9baf85964fd4c9f3"
+    "rec_cbeabab927eb72a7"
    ],
    "dois": [
-    "10.1002/ejsp.2858"
+    "10.1111/eci.12299"
    ],
-   "title": "on the predicted replicability of two decades of experimental research on system justification a z curve analysis",
+   "title": "all preclinical trials should be registered in advance in an online registry",
    "access_levels": [
     "extracted fields"
    ],
@@ -883,15 +867,15 @@
     "scholargw"
    ]
   },
-  "wrk_e37f9bcea0ca3c16": {
-   "work_id": "wrk_e37f9bcea0ca3c16",
+  "wrk_86982f359682d227": {
+   "work_id": "wrk_86982f359682d227",
    "records": [
-    "rec_cb45c512d9184f08"
+    "rec_5272090bc16238d2"
    ],
    "dois": [
-    "10.1002/cpp.70330"
+    "10.1002/jcpy.70002"
    ],
-   "title": "imagery interventions and cognitive behavioural therapy for psychological complaints related to bullying a systematic review and meta analysis",
+   "title": "comments on single paper meta analysis is unavoidable",
    "access_levels": [
     "extracted fields"
    ],
@@ -899,15 +883,15 @@
     "scholargw"
    ]
   },
-  "wrk_9faf98c24dbf01b5": {
-   "work_id": "wrk_9faf98c24dbf01b5",
+  "wrk_f812982b7d4d7535": {
+   "work_id": "wrk_f812982b7d4d7535",
    "records": [
-    "rec_e4e8ba4fab9c7f2c"
+    "rec_b34a345ade2767d2"
    ],
    "dois": [
-    "10.1111/cogs.70127"
+    "10.1111/j.1756-5391.2009.01015.x"
    ],
-   "title": "does body specificity stand on solid ground i z i curving the association between emotional valence and lateral space",
+   "title": "prospective registration of clinical trials in india strategies achievements amp challenges",
    "access_levels": [
     "extracted fields"
    ],
@@ -915,15 +899,47 @@
     "scholargw"
    ]
   },
-  "wrk_5b8feac4c8353cb5": {
-   "work_id": "wrk_5b8feac4c8353cb5",
+  "wrk_c7dfa1fef9aee4c7": {
+   "work_id": "wrk_c7dfa1fef9aee4c7",
    "records": [
-    "rec_443a2e0c2ac5c454"
+    "rec_6d961f2365fda78e"
    ],
    "dois": [
-    "10.1111/itor.70207"
+    "10.1111/dmcn.14054"
    ],
-   "title": "systematic flaws uncovering biases and replicability challenges in literature reviews on efficiency of education",
+   "title": "practical tools and strategies for researchers to increase replicability",
+   "access_levels": [
+    "extracted fields"
+   ],
+   "channels": [
+    "scholargw"
+   ]
+  },
+  "wrk_2ad29affff35aa23": {
+   "work_id": "wrk_2ad29affff35aa23",
+   "records": [
+    "rec_3d713bc25f786663"
+   ],
+   "dois": [
+    "10.1111/j.1756-5391.2009.01015.x@10.1111/(issn)1756-5391.clinical-trial"
+   ],
+   "title": null,
+   "access_levels": [
+    "extracted fields"
+   ],
+   "channels": [
+    "scholargw"
+   ]
+  },
+  "wrk_1ee19fbadbcc3cc7": {
+   "work_id": "wrk_1ee19fbadbcc3cc7",
+   "records": [
+    "rec_8348a336a4795447"
+   ],
+   "dois": [
+    "10.1002/jcpy.1462"
+   ],
+   "title": "single paper meta analysis is unavoidable",
    "access_levels": [
     "extracted fields"
    ],
@@ -966,19 +982,23 @@
     "scispace"
    ]
   },
-  "wrk_47e8efa9043b01f6": {
-   "work_id": "wrk_47e8efa9043b01f6",
+  "wrk_916ef5ba6413d7dd": {
+   "work_id": "wrk_916ef5ba6413d7dd",
    "records": [
     "rec_34a251e9a7b91a93",
     "rec_40036086ec3c442f",
     "rec_44caff42552c4a3c",
+    "rec_9758e0d3460780c3",
+    "rec_b968ffbf4fc5e1f7",
     "rec_d70f4cb6a94d086a"
    ],
    "dois": [
     "10.20982/tqmp.16.4.p376",
     "10.22541/au.160349187.73858736/v1",
     "10.23668/psycharchives.4839",
-    "10.48550/arxiv.2010.10513"
+    "10.48550/arxiv.2010.10513",
+    "10.6084/m9.figshare.12972785",
+    "10.6084/m9.figshare.12972785.v1"
    ],
    "title": "does preregistration improve the credibility of research findings",
    "access_levels": [
@@ -1036,105 +1056,24 @@
     "scispace"
    ]
   },
-  "wrk_5eeb85b852724986": {
-   "work_id": "wrk_5eeb85b852724986",
+  "wrk_b4a84a81536b7025": {
+   "work_id": "wrk_b4a84a81536b7025",
    "records": [
-    "rec_8a490be518960912"
+    "rec_682bba78c21bd2ab",
+    "rec_f217ab2ce1bd3c25",
+    "rec_f9a9ef42479dc67a"
    ],
    "dois": [
-    "10.7910/dvn/f8c4yl"
+    "10.2139/ssrn.4180594",
+    "10.31222/osf.io/uxf39",
+    "10.31222/osf.io/uxf39_v1"
    ],
-   "title": "replication data for do pre registration and pre analysis plans reduce p hacking and publication bias evidence from 15 992 test statistics and suggestions for improvement",
+   "title": "do pre registration and pre analysis plans reduce p hacking and publication bias",
    "access_levels": [
     "abstract only"
    ],
    "channels": [
-    "scispace"
-   ]
-  },
-  "wrk_5d2fedd2f8978800": {
-   "work_id": "wrk_5d2fedd2f8978800",
-   "records": [
-    "rec_f5a1aa7c88ddf39d"
-   ],
-   "dois": [
-    "10.1371/journal.pbio.3000690"
-   ],
-   "title": "preregistration of exploratory research learning from the golden age of discovery",
-   "access_levels": [
-    "abstract only"
-   ],
-   "channels": [
-    "scispace"
-   ]
-  },
-  "wrk_e8e1f6d5790c8950": {
-   "work_id": "wrk_e8e1f6d5790c8950",
-   "records": [
-    "rec_77010ef85a134152"
-   ],
-   "dois": [
-    "10.31222/osf.io/8psw2"
-   ],
-   "title": "successes and failures of replications a meta analysis of independent replication studies based on the osf registries",
-   "access_levels": [
-    "abstract only"
-   ],
-   "channels": [
-    "scispace"
-   ]
-  },
-  "wrk_14f849d669a5f8ec": {
-   "work_id": "wrk_14f849d669a5f8ec",
-   "records": [
-    "rec_5d3431b5030247b4",
-    "rec_a5b71c35af875875"
-   ],
-   "dois": [
-    "10.1177/10731911241275256",
-    "10.31234/osf.io/g7dn2"
-   ],
-   "title": "on the use and misuses of preregistration a reply to klonsky 2024",
-   "access_levels": [
-    "abstract only"
-   ],
-   "channels": [
-    "scispace"
-   ]
-  },
-  "wrk_e29b95ef80c23c1a": {
-   "work_id": "wrk_e29b95ef80c23c1a",
-   "records": [
-    "rec_47192402b86e1d4c"
-   ],
-   "dois": [
-    "10.1371/journal.pbio.3000693"
-   ],
-   "title": "frontloading selectivity a third way in scientific publishing",
-   "access_levels": [
-    "abstract only"
-   ],
-   "channels": [
-    "scispace"
-   ]
-  },
-  "wrk_6f90ce6d556e7b90": {
-   "work_id": "wrk_6f90ce6d556e7b90",
-   "records": [
-    "rec_8a9ec68c0319975f",
-    "rec_b18277d267060d7b",
-    "rec_e3be381e27b20c26"
-   ],
-   "dois": [
-    "10.6084/m9.figshare.3997821",
-    "10.6084/m9.figshare.3997821.v1",
-    "10.6084/m9.figshare.3997821.v3"
-   ],
-   "title": "on the reproducibility of psychological science",
-   "access_levels": [
-    "abstract only"
-   ],
-   "channels": [
+    "consensus",
     "scispace"
    ]
   },
@@ -1250,13 +1189,13 @@
     "consensus"
    ]
   },
-  "wrk_f91b7f17ee1f5e66": {
-   "work_id": "wrk_f91b7f17ee1f5e66",
+  "wrk_61b95ca05b748d4a": {
+   "work_id": "wrk_61b95ca05b748d4a",
    "records": [
-    "rec_d773cacbd4d13c0f"
+    "rec_50930a55512bf917"
    ],
    "dois": [],
-   "title": "do preregistration and preanalysis plans reduce p hacking and publication bias evidence from 15 992 test statistics and suggestions for improvement",
+   "title": "registered reports and replications an ongoing journal of school psychology initiative",
    "access_levels": [
     "abstract only"
    ],
@@ -1278,6 +1217,20 @@
     "consensus"
    ]
   },
+  "wrk_f91b7f17ee1f5e66": {
+   "work_id": "wrk_f91b7f17ee1f5e66",
+   "records": [
+    "rec_d773cacbd4d13c0f"
+   ],
+   "dois": [],
+   "title": "do preregistration and preanalysis plans reduce p hacking and publication bias evidence from 15 992 test statistics and suggestions for improvement",
+   "access_levels": [
+    "abstract only"
+   ],
+   "channels": [
+    "consensus"
+   ]
+  },
   "wrk_c46d015f631b4a3b": {
    "work_id": "wrk_c46d015f631b4a3b",
    "records": [
@@ -1292,13 +1245,13 @@
     "consensus"
    ]
   },
-  "wrk_7222f54700665b67": {
-   "work_id": "wrk_7222f54700665b67",
+  "wrk_1c4a68dd06ab7e9f": {
+   "work_id": "wrk_1c4a68dd06ab7e9f",
    "records": [
-    "rec_fcf0464c8483c5be"
+    "rec_caa32531adcf2910"
    ],
    "dois": [],
-   "title": "do pre registration and pre analysis plans reduce p hacking and publication bias",
+   "title": "reducing bias increasing transparency and calibrating confidence with preregistration",
    "access_levels": [
     "abstract only"
    ],
@@ -1306,41 +1259,13 @@
     "consensus"
    ]
   },
-  "wrk_bcec5f7f39356080": {
-   "work_id": "wrk_bcec5f7f39356080",
+  "wrk_737c0225dae05d34": {
+   "work_id": "wrk_737c0225dae05d34",
    "records": [
-    "rec_012adc3db9845e4a"
+    "rec_3cec44b2cd5e251d"
    ],
    "dois": [],
-   "title": "selective hypothesis reporting in psychology comparing preregistrations and corresponding publications",
-   "access_levels": [
-    "abstract only"
-   ],
-   "channels": [
-    "consensus"
-   ]
-  },
-  "wrk_61b95ca05b748d4a": {
-   "work_id": "wrk_61b95ca05b748d4a",
-   "records": [
-    "rec_50930a55512bf917"
-   ],
-   "dois": [],
-   "title": "registered reports and replications an ongoing journal of school psychology initiative",
-   "access_levels": [
-    "abstract only"
-   ],
-   "channels": [
-    "consensus"
-   ]
-  },
-  "wrk_f5812a3d73dfb397": {
-   "work_id": "wrk_f5812a3d73dfb397",
-   "records": [
-    "rec_0fff73500264fa76"
-   ],
-   "dois": [],
-   "title": "preregistration of psychology meta analyses a cross sectional study of prevalence and practice",
+   "title": "preregistration in experimental linguistics applications challenges and limitations",
    "access_levels": [
     "abstract only"
    ],
@@ -1367,13 +1292,8 @@
     "type": "has-preprint"
    },
    {
-    "a": "10.6084/m9.figshare.3997821.v3",
-    "b": "10.6084/m9.figshare.3997821",
-    "type": "IsPreviousVersionOf"
-   },
-   {
-    "a": "10.6084/m9.figshare.3997821.v1",
-    "b": "10.6084/m9.figshare.3997821",
+    "a": "10.6084/m9.figshare.12972785.v1",
+    "b": "10.6084/m9.figshare.12972785",
     "type": "IsPreviousVersionOf"
    }
   ],
@@ -1419,6 +1339,22 @@
     "guard": "author"
    },
    {
+    "a": "rec_44caff42552c4a3c",
+    "b": "rec_b968ffbf4fc5e1f7",
+    "title": "does preregistration improve the credibility of research findings",
+    "a_doi": "10.48550/arxiv.2010.10513",
+    "b_doi": "10.6084/m9.figshare.12972785.v1",
+    "guard": "author"
+   },
+   {
+    "a": "rec_44caff42552c4a3c",
+    "b": "rec_9758e0d3460780c3",
+    "title": "does preregistration improve the credibility of research findings",
+    "a_doi": "10.48550/arxiv.2010.10513",
+    "b_doi": "10.6084/m9.figshare.12972785",
+    "guard": "author"
+   },
+   {
     "a": "rec_34a251e9a7b91a93",
     "b": "rec_40036086ec3c442f",
     "title": "does preregistration improve the credibility of research findings",
@@ -1435,6 +1371,22 @@
     "guard": "author"
    },
    {
+    "a": "rec_34a251e9a7b91a93",
+    "b": "rec_b968ffbf4fc5e1f7",
+    "title": "does preregistration improve the credibility of research findings",
+    "a_doi": "10.23668/psycharchives.4839",
+    "b_doi": "10.6084/m9.figshare.12972785.v1",
+    "guard": "author"
+   },
+   {
+    "a": "rec_34a251e9a7b91a93",
+    "b": "rec_9758e0d3460780c3",
+    "title": "does preregistration improve the credibility of research findings",
+    "a_doi": "10.23668/psycharchives.4839",
+    "b_doi": "10.6084/m9.figshare.12972785",
+    "guard": "author"
+   },
+   {
     "a": "rec_40036086ec3c442f",
     "b": "rec_d70f4cb6a94d086a",
     "title": "does preregistration improve the credibility of research findings",
@@ -1443,70 +1395,97 @@
     "guard": "author"
    },
    {
-    "a": "rec_5d3431b5030247b4",
-    "b": "rec_a5b71c35af875875",
-    "title": "on the use and misuses of preregistration a reply to klonsky 2024",
-    "a_doi": "10.1177/10731911241275256",
-    "b_doi": "10.31234/osf.io/g7dn2",
+    "a": "rec_40036086ec3c442f",
+    "b": "rec_b968ffbf4fc5e1f7",
+    "title": "does preregistration improve the credibility of research findings",
+    "a_doi": "10.22541/au.160349187.73858736/v1",
+    "b_doi": "10.6084/m9.figshare.12972785.v1",
     "guard": "author"
    },
    {
-    "a": "rec_e3be381e27b20c26",
-    "b": "rec_8a9ec68c0319975f",
-    "title": "on the reproducibility of psychological science",
-    "a_doi": "10.6084/m9.figshare.3997821",
-    "b_doi": "10.6084/m9.figshare.3997821.v3",
+    "a": "rec_40036086ec3c442f",
+    "b": "rec_9758e0d3460780c3",
+    "title": "does preregistration improve the credibility of research findings",
+    "a_doi": "10.22541/au.160349187.73858736/v1",
+    "b_doi": "10.6084/m9.figshare.12972785",
     "guard": "author"
    },
    {
-    "a": "rec_e3be381e27b20c26",
-    "b": "rec_b18277d267060d7b",
-    "title": "on the reproducibility of psychological science",
-    "a_doi": "10.6084/m9.figshare.3997821",
-    "b_doi": "10.6084/m9.figshare.3997821.v1",
+    "a": "rec_d70f4cb6a94d086a",
+    "b": "rec_b968ffbf4fc5e1f7",
+    "title": "does preregistration improve the credibility of research findings",
+    "a_doi": "10.20982/tqmp.16.4.p376",
+    "b_doi": "10.6084/m9.figshare.12972785.v1",
     "guard": "author"
    },
    {
-    "a": "rec_8a9ec68c0319975f",
-    "b": "rec_b18277d267060d7b",
-    "title": "on the reproducibility of psychological science",
-    "a_doi": "10.6084/m9.figshare.3997821.v3",
-    "b_doi": "10.6084/m9.figshare.3997821.v1",
+    "a": "rec_d70f4cb6a94d086a",
+    "b": "rec_9758e0d3460780c3",
+    "title": "does preregistration improve the credibility of research findings",
+    "a_doi": "10.20982/tqmp.16.4.p376",
+    "b_doi": "10.6084/m9.figshare.12972785",
+    "guard": "author"
+   },
+   {
+    "a": "rec_b968ffbf4fc5e1f7",
+    "b": "rec_9758e0d3460780c3",
+    "title": "does preregistration improve the credibility of research findings",
+    "a_doi": "10.6084/m9.figshare.12972785.v1",
+    "b_doi": "10.6084/m9.figshare.12972785",
+    "guard": "author"
+   },
+   {
+    "a": "rec_682bba78c21bd2ab",
+    "b": "rec_f217ab2ce1bd3c25",
+    "title": "do pre registration and pre analysis plans reduce p hacking and publication bias",
+    "a_doi": "10.2139/ssrn.4180594",
+    "b_doi": "10.31222/osf.io/uxf39",
+    "guard": "author"
+   },
+   {
+    "a": "rec_682bba78c21bd2ab",
+    "b": "rec_f9a9ef42479dc67a",
+    "title": "do pre registration and pre analysis plans reduce p hacking and publication bias",
+    "a_doi": "10.2139/ssrn.4180594",
+    "b_doi": "10.31222/osf.io/uxf39_v1",
+    "guard": "author"
+   },
+   {
+    "a": "rec_f217ab2ce1bd3c25",
+    "b": "rec_f9a9ef42479dc67a",
+    "title": "do pre registration and pre analysis plans reduce p hacking and publication bias",
+    "a_doi": "10.31222/osf.io/uxf39",
+    "b_doi": "10.31222/osf.io/uxf39_v1",
     "guard": "author"
    }
   ],
   "title_unguarded": [],
   "doi_version": [
    {
-    "base": "10.6084/m9.figshare.3997821",
-    "a": "10.6084/m9.figshare.3997821",
-    "b": "10.6084/m9.figshare.3997821.v1"
-   },
-   {
-    "base": "10.6084/m9.figshare.3997821",
-    "a": "10.6084/m9.figshare.3997821",
-    "b": "10.6084/m9.figshare.3997821.v3"
+    "base": "10.6084/m9.figshare.12972785",
+    "a": "10.6084/m9.figshare.12972785",
+    "b": "10.6084/m9.figshare.12972785.v1"
    }
   ],
   "rejected": []
  },
  "stats": {
   "enrichment_mode": "network",
-  "records": 93,
-  "works": 85,
-  "redundant_records": 8,
-  "clusters": 5,
-  "largest_cluster": 4,
-  "links_by_relation": 5,
-  "links_by_title_guarded": 12,
+  "records": 89,
+  "works": 80,
+  "redundant_records": 9,
+  "clusters": 4,
+  "largest_cluster": 6,
+  "links_by_relation": 4,
+  "links_by_title_guarded": 20,
   "links_by_title_unguarded": 0,
   "title_collisions_rejected": 0,
-  "records_no_doi": 15,
+  "records_no_doi": 14,
   "records_unlinkable": 0,
   "enrichment": {
-   "crossref": 70,
-   "datacite": 7,
-   "absent": 1,
+   "crossref": 68,
+   "datacite": 5,
+   "absent": 2,
    "error": 0,
    "skipped": 0
   },

@@ -44,18 +44,18 @@ def load_identity():
 
 # --------------------------------------------------------------- query sets
 def query_sets(question, disconfirming):
-    """spec 16: the disconfirming arm is worded for the opposite conclusion.
+    """spec 16: the disconfirming set is worded for the opposite conclusion.
 
     The disconfirming query is REQUIRED and has no template default, because a
     template does not produce one. This was measured: an earlier default of
     "Evidence that the following does not hold, or fails to replicate: <question>"
     embeds the question verbatim, and semantic search returns largely the same
     papers. Against a hand-written opposite query on the same day and channels,
-    the template doubled the number of sources appearing in BOTH arms (26 vs 12)
+    the template doubled the number of sources appearing in BOTH query sets (26 vs 12)
     and cut unique sources from 93 to 80. Spec 16 was satisfied in form and not
     in substance.
 
-    Write the disconfirming arm as the negated *claim*, not as a meta-request
+    Write the disconfirming set as the negated *claim*, not as a meta-request
     about the claim: "pre-registration does not reduce publication bias", never
     "evidence that pre-registration does not improve replication".
 
@@ -70,21 +70,21 @@ def query_sets(question, disconfirming):
     return {"supporting": question, "disconfirming": disconfirming}
 
 
-def arm_overlap(per_arm):
-    """How much the two arms return the same sources, per channel.
+def query_set_overlap(per_set):
+    """How much the two query sets return the same sources, per channel.
 
-    A disconfirming arm that returns the supporting arm's results is not a
+    A disconfirming query set that returns the supporting set's results is not a
     disconfirming channel, however it was worded. Measured every run so the
     failure is visible rather than assumed away.
     """
     out = {}
-    channels = {k.partition("/")[0] for k in per_arm}
+    channels = {k.partition("/")[0] for k in per_set}
     for ch in channels:
-        arms = {k.partition("/")[2]: v for k, v in per_arm.items()
+        sets = {k.partition("/")[2]: v for k, v in per_set.items()
                 if k.partition("/")[0] == ch}
-        if len(arms) < 2:
+        if len(sets) < 2:
             continue
-        (a, ra), (b, rb) = sorted(arms.items())[:2]
+        (a, ra), (b, rb) = sorted(sets.items())[:2]
         ka = {(r.get("doi") or r.get("title") or "").lower() for r in ra} - {""}
         kb = {(r.get("doi") or r.get("title") or "").lower() for r in rb} - {""}
         union = ka | kb
@@ -185,14 +185,14 @@ def integrity_check(dois, email=None, cap=None):
 
 
 # ------------------------------------------------------------------- core
-def collate(per_arm):
-    """per_arm: {'channel/arm': [records]} -> unique sources + coverage stats."""
+def collate(per_set):
+    """per_set: {'channel/query set': [records]} -> unique sources + coverage stats."""
     ident = load_identity()
     tagged = []
-    for key, recs in per_arm.items():
-        channel, _, arm = key.partition("/")
+    for key, recs in per_set.items():
+        channel, _, qset = key.partition("/")
         for r in recs:
-            tagged.append(dict(r, channel=channel, arm=arm))
+            tagged.append(dict(r, channel=channel, query_set=qset))
 
     unique, index = ident.dedupe_sources(tagged)
     for k, rec in unique.items():
@@ -210,8 +210,8 @@ def collate(per_arm):
         "duplicate_rate": round(1 - len(unique) / len(tagged), 3) if tagged else None,
         "with_doi": sum(1 for r in unique.values() if r["doi_normalised"]),
         "multi_channel": sum(1 for ch in index.values() if len(ch) > 1),
-        "per_channel_arm": {k: len(v) for k, v in per_arm.items()},
-        "arm_overlap": arm_overlap(per_arm),
+        "per_channel_query_set": {k: len(v) for k, v in per_set.items()},
+        "query_set_overlap": query_set_overlap(per_set),
         "access_mix": {},
     }
     for r in unique.values():
@@ -223,7 +223,12 @@ def collate(per_arm):
 def linkage_section(lk):
     """Report records and works separately: retrieval is counted in records,
     independence in works (spec 27 / X-3)."""
+    mode = lk.get("enrichment_mode", "network")
     L = ["", "## Source identity (linkage)", "",
+         f"Linkage ran with registry enrichment **{mode}**."
+         + ("" if mode == "network" else " Offline linkage is strictly weaker: without"
+            " canonical titles, authors and relations, links that exist are not found."),
+         "",
          f"{lk['records']} source records resolve to **{lk['works']} distinct works** "
          f"({lk['redundant_records']} redundant records across {lk['clusters']} clusters; "
          f"largest cluster {lk['largest_cluster']}).",
@@ -258,10 +263,13 @@ def coverage_note(question, queries, stats, integrity, channels_used, unavailabl
     L = [f"# Coverage note — {question}", "",
          f"Run {datetime.date.today().isoformat()}. Stage 0: retrieval only, no grades.", "",
          "## Query sets (spec 15, recorded as executed)", ""]
-    for arm, q in queries.items():
-        L += [f"- **{arm}**: {q}"]
-    L += ["", "## Channels and yield", "", "| Channel / arm | Records |", "|---|---|"]
-    for k, n in sorted(stats["per_channel_arm"].items()):
+    for qset, q in queries.items():
+        L += [f"- **{qset}**: {q}"]
+    L += ["", "## Channels and yield", "", "| Channel / query set | Records |", "|---|---|"]
+    # runs written before "arm" became "query set" carry the old key; data files
+    # outlive code renames
+    per_cs = stats.get("per_channel_query_set") or stats.get("per_channel_arm") or {}
+    for k, n in sorted(per_cs.items()):
         L += [f"| {k} | {n} |"]
     L += ["",
           f"{stats['records_returned']} records returned, **{stats['unique_sources']} unique "
@@ -272,10 +280,10 @@ def coverage_note(question, queries, stats, integrity, channels_used, unavailabl
           "drawing on overlapping upstream corpora can still return near-disjoint sets, so this "
           "figure is measured per run rather than assumed (spec 58).",
           ""]
-    ov = stats.get("arm_overlap") or {}
+    ov = stats.get("query_set_overlap") or stats.get("arm_overlap") or {}
     if ov:
-        L += ["## Arm independence (spec 16)", "",
-              "How much of the disconfirming arm's yield was the supporting arm's own "
+        L += ["## Query set overlap (spec 16)", "",
+              "How much of the disconfirming set's yield was the supporting set's own "
               "results. A high figure means the channel was searched twice for the same "
               "thing, whatever the query said.", "",
               "| Channel | Shared sources | Jaccard |", "|---|---|---|"]
@@ -359,7 +367,7 @@ def run_integrity(rundir, email=None, cap=None):
     with open(os.path.join(rundir, "coverage.json"), "w") as fh:
         json.dump(cov, fh, indent=1)
     note = coverage_note(cov["question"], cov["queries"], cov["stats"], integrity,
-                         sorted(cov["stats"]["per_channel_arm"]), {})
+                         sorted(cov["stats"]["per_channel_query_set"]), {})
     with open(os.path.join(rundir, "coverage-note.md"), "w") as fh:
         fh.write(note)
     tally = {}
@@ -374,23 +382,23 @@ def run_live(question, mcp, servers, disconfirming=None, limits=None, email=None
     recorded as unavailable rather than skipped silently (specs 47, 57)."""
     queries = query_sets(question, disconfirming)
     limits = limits or {}
-    per_arm, unavailable, raw = {}, {}, {}
+    per_set, unavailable, raw = {}, {}, {}
     for ch, (method, build, parser, default_n) in CHANNELS.items():
         server = servers.get(ch)
         if not server:
             unavailable[ch] = "no server configured for this channel"
             continue
-        for arm, q in queries.items():
+        for qset, q in queries.items():
             try:
                 payload = mcp(server, method, **build(q, limits.get(ch, default_n)))
-                raw[f"{ch}/{arm}"] = payload
-                per_arm[f"{ch}/{arm}"] = parser(payload)
+                raw[f"{ch}/{qset}"] = payload
+                per_set[f"{ch}/{qset}"] = parser(payload)
             except Exception as e:                      # spec 57: never silent
-                unavailable[f"{ch}/{arm}"] = f"{type(e).__name__}: {e}"[:200]
-    if not per_arm:
+                unavailable[f"{ch}/{qset}"] = f"{type(e).__name__}: {e}"[:200]
+    if not per_set:
         raise RuntimeError("no channel returned records; retrieval layer failed")
 
-    unique, stats = collate(per_arm)
+    unique, stats = collate(per_set)
     integrity = {}
     if check_integrity:
         dois = [r["doi_normalised"] for r in unique.values() if r["doi_normalised"]]
@@ -398,7 +406,7 @@ def run_live(question, mcp, servers, disconfirming=None, limits=None, email=None
     manifest = {"mode": "live", "date": datetime.date.today().isoformat(),
                 "limits": {ch: limits.get(ch, CHANNELS[ch][3]) for ch in CHANNELS},
                 "channels_configured": sorted(servers)}
-    note = coverage_note(question, queries, stats, integrity, sorted(per_arm), unavailable)
+    note = coverage_note(question, queries, stats, integrity, sorted(per_set), unavailable)
     outdir = outdir or os.path.join(REPO_ROOT, "runs",
                                     datetime.date.today().isoformat() + "-" + slug(question))
     write_run(outdir, question, queries, unique, stats, integrity, note, manifest)
@@ -417,7 +425,7 @@ def run_replay(payload_path, question="(replayed payloads)", outdir=None,
     against evidence; the connectors themselves are not reproducible."""
     with open(payload_path) as fh:
         raw = json.load(fh)
-    per_arm, unavailable = {}, {}
+    per_set, unavailable = {}, {}
     for key, payload in raw.items():
         ch = key.partition("/")[0]
         if ch not in CHANNELS:
@@ -426,8 +434,8 @@ def run_replay(payload_path, question="(replayed payloads)", outdir=None,
         if isinstance(payload, dict) and "__error__" in payload:
             unavailable[key] = payload["__error__"]
             continue
-        per_arm[key] = CHANNELS[ch][2](payload)
-    unique, stats = collate(per_arm)
+        per_set[key] = CHANNELS[ch][2](payload)
+    unique, stats = collate(per_set)
     integrity = {}
     if check_integrity:
         dois = [r["doi_normalised"] for r in unique.values() if r["doi_normalised"]]
@@ -435,7 +443,7 @@ def run_replay(payload_path, question="(replayed payloads)", outdir=None,
     queries = queries or {"(replay)": "queries as executed on the payload date"}
     manifest = {"mode": "replay", "payloads": os.path.basename(payload_path),
                 "date": datetime.date.today().isoformat()}
-    note = coverage_note(question, queries, stats, integrity, sorted(per_arm), unavailable)
+    note = coverage_note(question, queries, stats, integrity, sorted(per_set), unavailable)
     outdir = outdir or os.path.join(REPO_ROOT, "runs", "replay-" +
                                     os.path.basename(payload_path).replace(".json", ""))
     return write_run(outdir, question, queries, unique, stats, integrity, note, manifest), stats
