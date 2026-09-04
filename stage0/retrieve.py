@@ -43,16 +43,54 @@ def load_identity():
 
 
 # --------------------------------------------------------------- query sets
-def query_sets(question, disconfirming=None):
+def query_sets(question, disconfirming):
     """spec 16: the disconfirming arm is worded for the opposite conclusion.
+
+    The disconfirming query is REQUIRED and has no template default, because a
+    template does not produce one. This was measured: an earlier default of
+    "Evidence that the following does not hold, or fails to replicate: <question>"
+    embeds the question verbatim, and semantic search returns largely the same
+    papers. Against a hand-written opposite query on the same day and channels,
+    the template doubled the number of sources appearing in BOTH arms (26 vs 12)
+    and cut unique sources from 93 to 80. Spec 16 was satisfied in form and not
+    in substance.
+
+    Write the disconfirming arm as the negated *claim*, not as a meta-request
+    about the claim: "pre-registration does not reduce publication bias", never
+    "evidence that pre-registration does not improve replication".
 
     Returned verbatim in the manifest, because spec 15 requires the strategy to
     be recorded as executed rather than described.
     """
-    if disconfirming is None:
-        disconfirming = ("Evidence that the following does not hold, or fails to "
-                         "replicate: " + question)
+    if not disconfirming or not str(disconfirming).strip():
+        raise ValueError(
+            "a disconfirming query is required (spec 16) and must be written, not "
+            "derived from the question: templates that embed the question retrieve "
+            "the same literature. Word it as the negated claim.")
     return {"supporting": question, "disconfirming": disconfirming}
+
+
+def arm_overlap(per_arm):
+    """How much the two arms return the same sources, per channel.
+
+    A disconfirming arm that returns the supporting arm's results is not a
+    disconfirming channel, however it was worded. Measured every run so the
+    failure is visible rather than assumed away.
+    """
+    out = {}
+    channels = {k.partition("/")[0] for k in per_arm}
+    for ch in channels:
+        arms = {k.partition("/")[2]: v for k, v in per_arm.items()
+                if k.partition("/")[0] == ch}
+        if len(arms) < 2:
+            continue
+        (a, ra), (b, rb) = sorted(arms.items())[:2]
+        ka = {(r.get("doi") or r.get("title") or "").lower() for r in ra} - {""}
+        kb = {(r.get("doi") or r.get("title") or "").lower() for r in rb} - {""}
+        union = ka | kb
+        out[ch] = {"shared": len(ka & kb),
+                   "jaccard": round(len(ka & kb) / len(union), 3) if union else None}
+    return out
 
 
 # ----------------------------------------------------------------- parsers
@@ -173,6 +211,7 @@ def collate(per_arm):
         "with_doi": sum(1 for r in unique.values() if r["doi_normalised"]),
         "multi_channel": sum(1 for ch in index.values() if len(ch) > 1),
         "per_channel_arm": {k: len(v) for k, v in per_arm.items()},
+        "arm_overlap": arm_overlap(per_arm),
         "access_mix": {},
     }
     for r in unique.values():
@@ -232,7 +271,23 @@ def coverage_note(question, queries, stats, integrity, channels_used, unavailabl
           f"{stats['multi_channel']} source(s) were returned by more than one channel. Channels "
           "drawing on overlapping upstream corpora can still return near-disjoint sets, so this "
           "figure is measured per run rather than assumed (spec 58).",
-          "", "## Access mix (spec 18)", ""]
+          ""]
+    ov = stats.get("arm_overlap") or {}
+    if ov:
+        L += ["## Arm independence (spec 16)", "",
+              "How much of the disconfirming arm's yield was the supporting arm's own "
+              "results. A high figure means the channel was searched twice for the same "
+              "thing, whatever the query said.", "",
+              "| Channel | Shared sources | Jaccard |", "|---|---|---|"]
+        for ch, v in sorted(ov.items()):
+            L += [f"| {ch} | {v['shared']} | {v['jaccard']} |"]
+        hot = [ch for ch, v in ov.items() if (v["jaccard"] or 0) >= 0.30]
+        if hot:
+            L += ["", f"**Arm overlap at or above 0.30 on: {', '.join(sorted(hot))}.** "
+                  "Re-word the disconfirming query as the negated claim and re-run before "
+                  "treating this run's disconfirmation channel as searched."]
+        L += [""]
+    L += ["## Access mix (spec 18)", ""]
     for a, n in sorted(stats["access_mix"].items()):
         L += [f"- {a}: {n}"]
     if integrity:
@@ -319,7 +374,7 @@ def run_live(question, mcp, servers, disconfirming=None, limits=None, email=None
     recorded as unavailable rather than skipped silently (specs 47, 57)."""
     queries = query_sets(question, disconfirming)
     limits = limits or {}
-    per_arm, unavailable = {}, {}
+    per_arm, unavailable, raw = {}, {}, {}
     for ch, (method, build, parser, default_n) in CHANNELS.items():
         server = servers.get(ch)
         if not server:
@@ -328,6 +383,7 @@ def run_live(question, mcp, servers, disconfirming=None, limits=None, email=None
         for arm, q in queries.items():
             try:
                 payload = mcp(server, method, **build(q, limits.get(ch, default_n)))
+                raw[f"{ch}/{arm}"] = payload
                 per_arm[f"{ch}/{arm}"] = parser(payload)
             except Exception as e:                      # spec 57: never silent
                 unavailable[f"{ch}/{arm}"] = f"{type(e).__name__}: {e}"[:200]
@@ -345,11 +401,18 @@ def run_live(question, mcp, servers, disconfirming=None, limits=None, email=None
     note = coverage_note(question, queries, stats, integrity, sorted(per_arm), unavailable)
     outdir = outdir or os.path.join(REPO_ROOT, "runs",
                                     datetime.date.today().isoformat() + "-" + slug(question))
-    return write_run(outdir, question, queries, unique, stats, integrity, note, manifest), stats
+    write_run(outdir, question, queries, unique, stats, integrity, note, manifest)
+    # Persist the raw payloads. Connector output is not reproducible, so without
+    # them a later question about this run ("why did the counts change?") can only
+    # be answered by a fresh experiment rather than a diff. They are also the
+    # fixture a future parser change gets tested against.
+    with open(os.path.join(outdir, "payloads.json"), "w") as fh:
+        json.dump(raw, fh)
+    return outdir, stats
 
 
 def run_replay(payload_path, question="(replayed payloads)", outdir=None,
-               check_integrity=False, email=None):
+               check_integrity=False, email=None, queries=None):
     """Re-parse dated payloads from records/. Verifies the parsers and dedupe
     against evidence; the connectors themselves are not reproducible."""
     with open(payload_path) as fh:
@@ -369,7 +432,7 @@ def run_replay(payload_path, question="(replayed payloads)", outdir=None,
     if check_integrity:
         dois = [r["doi_normalised"] for r in unique.values() if r["doi_normalised"]]
         integrity = integrity_check(dois, email=email)
-    queries = {"(replay)": "queries as executed on the payload date"}
+    queries = queries or {"(replay)": "queries as executed on the payload date"}
     manifest = {"mode": "replay", "payloads": os.path.basename(payload_path),
                 "date": datetime.date.today().isoformat()}
     note = coverage_note(question, queries, stats, integrity, sorted(per_arm), unavailable)

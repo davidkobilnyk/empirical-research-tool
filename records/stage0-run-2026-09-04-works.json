@@ -1,0 +1,1509 @@
+{
+ "works": {
+  "wrk_461d0b216ef8474d": {
+   "work_id": "wrk_461d0b216ef8474d",
+   "records": [
+    "rec_f7ca4ee45ae03fc1"
+   ],
+   "dois": [
+    "10.1016/s0140-6736(20)30925-9"
+   ],
+   "title": "global burden of 369 diseases and injuries in 204 countries and territories 1990 2019 a systematic analysis for the global burden of disease study 2019",
+   "access_levels": [
+    "full text"
+   ],
+   "channels": [
+    "fasttrack"
+   ]
+  },
+  "wrk_6c8f8e70676872a2": {
+   "work_id": "wrk_6c8f8e70676872a2",
+   "records": [
+    "rec_acb8825bbdfc44dd"
+   ],
+   "dois": [
+    "10.1016/s0140-6736(12)61729-2"
+   ],
+   "title": "years lived with disability ylds for 1160 sequelae of 289 diseases and injuries 1990 2010 a systematic analysis for the global burden of disease study 2010",
+   "access_levels": [
+    "full text"
+   ],
+   "channels": [
+    "fasttrack"
+   ]
+  },
+  "wrk_8b1f517ab9d12c39": {
+   "work_id": "wrk_8b1f517ab9d12c39",
+   "records": [
+    "rec_a7b3e71287f16ba8"
+   ],
+   "dois": [
+    "10.1186/s41239-019-0171-0"
+   ],
+   "title": "systematic review of research on artificial intelligence applications in higher education where are the educators",
+   "access_levels": [
+    "full text"
+   ],
+   "channels": [
+    "fasttrack"
+   ]
+  },
+  "wrk_13ba9180c878d2e1": {
+   "work_id": "wrk_13ba9180c878d2e1",
+   "records": [
+    "rec_7fc66b5ae19b5260"
+   ],
+   "dois": [
+    "10.1038/s41562-018-0399-z"
+   ],
+   "title": "evaluating the replicability of social science experiments in nature and science between 2010 and 2015",
+   "access_levels": [
+    "full text"
+   ],
+   "channels": [
+    "consensus",
+    "fasttrack"
+   ]
+  },
+  "wrk_29c5353ae31be664": {
+   "work_id": "wrk_29c5353ae31be664",
+   "records": [
+    "rec_04c671efd23855a1"
+   ],
+   "dois": [
+    "10.1016/s0140-6736(18)32203-7"
+   ],
+   "title": "global regional and national age sex specific mortality for 282 causes of death in 195 countries and territories 1980 2017 a systematic analysis for the global burden of disease study 2017",
+   "access_levels": [
+    "full text"
+   ],
+   "channels": [
+    "fasttrack"
+   ]
+  },
+  "wrk_9ebaa216bce65391": {
+   "work_id": "wrk_9ebaa216bce65391",
+   "records": [
+    "rec_8501bd22bb965820",
+    "rec_995f5c5ec743f79c"
+   ],
+   "dois": [
+    "10.1016/j.ijsu.2014.07.014",
+    "10.1371/journal.pmed.0040297"
+   ],
+   "title": "strengthening the reporting of observational studies in epidemiology strobe explanation and elaboration",
+   "access_levels": [
+    "full text"
+   ],
+   "channels": [
+    "fasttrack"
+   ]
+  },
+  "wrk_67c6946b4acbb2f5": {
+   "work_id": "wrk_67c6946b4acbb2f5",
+   "records": [
+    "rec_72bbd3e034d06fc6"
+   ],
+   "dois": [
+    "10.1016/j.jesp.2013.10.005"
+   ],
+   "title": "the replication recipe what makes for a convincing replication",
+   "access_levels": [
+    "full text"
+   ],
+   "channels": [
+    "fasttrack"
+   ]
+  },
+  "wrk_32b121c673fe3b9b": {
+   "work_id": "wrk_32b121c673fe3b9b",
+   "records": [
+    "rec_274be45c62ca3e8c"
+   ],
+   "dois": [
+    "10.1038/s41586-020-2196-x"
+   ],
+   "title": "virological assessment of hospitalized patients with covid 2019",
+   "access_levels": [
+    "full text"
+   ],
+   "channels": [
+    "fasttrack"
+   ]
+  },
+  "wrk_82e0fddb4e880153": {
+   "work_id": "wrk_82e0fddb4e880153",
+   "records": [
+    "rec_c165c8f403f6204a"
+   ],
+   "dois": [
+    "10.1561/2300000035"
+   ],
+   "title": "a review of point cloud registration algorithms for mobile robotics",
+   "access_levels": [
+    "full text"
+   ],
+   "channels": [
+    "fasttrack"
+   ]
+  },
+  "wrk_7cca38ccc3df9f35": {
+   "work_id": "wrk_7cca38ccc3df9f35",
+   "records": [
+    "rec_2f7310d719a9157b"
+   ],
+   "dois": [
+    "10.1371/journal.pmed.0020124"
+   ],
+   "title": "why most published research findings are false",
+   "access_levels": [
+    "full text"
+   ],
+   "channels": [
+    "fasttrack"
+   ]
+  },
+  "wrk_a8a9101809c34e19": {
+   "work_id": "wrk_a8a9101809c34e19",
+   "records": [
+    "rec_a66a202709310555"
+   ],
+   "dois": [
+    "10.1371/journal.pmed.0030442"
+   ],
+   "title": "projections of global mortality and burden of disease from 2002 to 2030",
+   "access_levels": [
+    "full text"
+   ],
+   "channels": [
+    "fasttrack"
+   ]
+  },
+  "wrk_051f9ab33ea59005": {
+   "work_id": "wrk_051f9ab33ea59005",
+   "records": [
+    "rec_8f5d310a7d2278b9"
+   ],
+   "dois": [
+    "10.1146/annurev-psych-020821-114157"
+   ],
+   "title": "replicability robustness and reproducibility in psychological science",
+   "access_levels": [
+    "full text"
+   ],
+   "channels": [
+    "fasttrack"
+   ]
+  },
+  "wrk_5ee6a768df3bed63": {
+   "work_id": "wrk_5ee6a768df3bed63",
+   "records": [
+    "rec_5d326c5e9e0a8019"
+   ],
+   "dois": [
+    "10.1016/j.pain.2014.09.020"
+   ],
+   "title": "incidence prevalence and predictors of chemotherapy induced peripheral neuropathy a systematic review and meta analysis",
+   "access_levels": [
+    "full text"
+   ],
+   "channels": [
+    "fasttrack"
+   ]
+  },
+  "wrk_73cde3f7c0aadfd5": {
+   "work_id": "wrk_73cde3f7c0aadfd5",
+   "records": [
+    "rec_a570c8cea356e614"
+   ],
+   "dois": [
+    "10.1093/ije/dys066"
+   ],
+   "title": "cohort profile the avon longitudinal study of parents and children alspac mothers cohort",
+   "access_levels": [
+    "full text"
+   ],
+   "channels": [
+    "fasttrack"
+   ]
+  },
+  "wrk_c67fd57a23757bba": {
+   "work_id": "wrk_c67fd57a23757bba",
+   "records": [
+    "rec_bf0157e3dba2253a"
+   ],
+   "dois": [
+    "10.1038/s42003-018-0073-z"
+   ],
+   "title": "small sample sizes reduce the replicability of task based fmri studies",
+   "access_levels": [
+    "full text"
+   ],
+   "channels": [
+    "fasttrack"
+   ]
+  },
+  "wrk_886b2f2c186effda": {
+   "work_id": "wrk_886b2f2c186effda",
+   "records": [
+    "rec_84e02c9cb9eda655"
+   ],
+   "dois": [
+    "10.7554/elife.33468"
+   ],
+   "title": "large scale replication study reveals a limit on probabilistic prediction in language comprehension",
+   "access_levels": [
+    "full text"
+   ],
+   "channels": [
+    "fasttrack"
+   ]
+  },
+  "wrk_6d90f05560169ae4": {
+   "work_id": "wrk_6d90f05560169ae4",
+   "records": [
+    "rec_01838da091233dda"
+   ],
+   "dois": [
+    "10.1089/thy.2015.0020"
+   ],
+   "title": "2015 american thyroid association management guidelines for adult patients with thyroid nodules and differentiated thyroid cancer the american thyroid association guidelines task force on thyroid nodules and differentiated thyroid cancer",
+   "access_levels": [
+    "full text"
+   ],
+   "channels": [
+    "fasttrack"
+   ]
+  },
+  "wrk_0b049882d555ffd6": {
+   "work_id": "wrk_0b049882d555ffd6",
+   "records": [
+    "rec_aced87f09f5b3735"
+   ],
+   "dois": [
+    "10.1371/journal.pmed.1000245"
+   ],
+   "title": "can animal models of disease reliably inform human studies",
+   "access_levels": [
+    "full text"
+   ],
+   "channels": [
+    "fasttrack"
+   ]
+  },
+  "wrk_8cc98e6a0364237b": {
+   "work_id": "wrk_8cc98e6a0364237b",
+   "records": [
+    "rec_eee3ebf659c876f7"
+   ],
+   "dois": [
+    "10.1080/146324400363491"
+   ],
+   "title": "initial conditions as predictors of new venture performance a replication and extension of the cooper et al study",
+   "access_levels": [
+    "full text"
+   ],
+   "channels": [
+    "fasttrack"
+   ]
+  },
+  "wrk_67e1f287ca986512": {
+   "work_id": "wrk_67e1f287ca986512",
+   "records": [
+    "rec_cf76571a4dba9f19"
+   ],
+   "dois": [
+    "10.1136/bmj.b2535"
+   ],
+   "title": "preferred reporting items for systematic reviews and meta analyses the prisma statement",
+   "access_levels": [
+    "full text"
+   ],
+   "channels": [
+    "fasttrack"
+   ]
+  },
+  "wrk_ce336b9805a08705": {
+   "work_id": "wrk_ce336b9805a08705",
+   "records": [
+    "rec_74bcadddecb7d01a"
+   ],
+   "dois": [
+    "10.1371/journal.pmed.1000100"
+   ],
+   "title": "the prisma statement for reporting systematic reviews and meta analyses of studies that evaluate health care interventions explanation and elaboration",
+   "access_levels": [
+    "full text"
+   ],
+   "channels": [
+    "fasttrack"
+   ]
+  },
+  "wrk_d62d3ced95a23b3a": {
+   "work_id": "wrk_d62d3ced95a23b3a",
+   "records": [
+    "rec_93076bc0bafb2ced"
+   ],
+   "dois": [
+    "10.1136/bmj.g7647"
+   ],
+   "title": "preferred reporting items for systematic review and meta analysis protocols prisma p 2015 elaboration and explanation",
+   "access_levels": [
+    "full text"
+   ],
+   "channels": [
+    "fasttrack"
+   ]
+  },
+  "wrk_24a7b507bee7d7c5": {
+   "work_id": "wrk_24a7b507bee7d7c5",
+   "records": [
+    "rec_eaaa63dd37b0a418"
+   ],
+   "dois": [
+    "10.1038/nrn3475"
+   ],
+   "title": "power failure why small sample size undermines the reliability of neuroscience",
+   "access_levels": [
+    "full text"
+   ],
+   "channels": [
+    "fasttrack"
+   ]
+  },
+  "wrk_837f76647efb90fc": {
+   "work_id": "wrk_837f76647efb90fc",
+   "records": [
+    "rec_0c573b1ced85ee09"
+   ],
+   "dois": [
+    "10.1136/bmj.c869"
+   ],
+   "title": "consort 2010 explanation and elaboration updated guidelines for reporting parallel group randomised trials",
+   "access_levels": [
+    "full text"
+   ],
+   "channels": [
+    "fasttrack"
+   ]
+  },
+  "wrk_053fe0fb5522fa3b": {
+   "work_id": "wrk_053fe0fb5522fa3b",
+   "records": [
+    "rec_a51891488046682c"
+   ],
+   "dois": [
+    "10.3310/hta4100"
+   ],
+   "title": "publication and related biases",
+   "access_levels": [
+    "full text"
+   ],
+   "channels": [
+    "fasttrack"
+   ]
+  },
+  "wrk_0319394821a813f4": {
+   "work_id": "wrk_0319394821a813f4",
+   "records": [
+    "rec_13527847acf9b0dd"
+   ],
+   "dois": [
+    "10.1136/bmj.b2700"
+   ],
+   "title": "the prisma statement for reporting systematic reviews and meta analyses of studies that evaluate healthcare interventions explanation and elaboration",
+   "access_levels": [
+    "full text"
+   ],
+   "channels": [
+    "fasttrack"
+   ]
+  },
+  "wrk_31c7e83f74d10b44": {
+   "work_id": "wrk_31c7e83f74d10b44",
+   "records": [
+    "rec_c6a4ff4c4bf298a7"
+   ],
+   "dois": [
+    "10.1002/per.1919"
+   ],
+   "title": "recommendations for increasing replicability in psychology",
+   "access_levels": [
+    "full text"
+   ],
+   "channels": [
+    "fasttrack"
+   ]
+  },
+  "wrk_c0547c61972e4dde": {
+   "work_id": "wrk_c0547c61972e4dde",
+   "records": [
+    "rec_e6f4380372b08d9c"
+   ],
+   "dois": [
+    "10.1371/journal.pbio.3000410"
+   ],
+   "title": "the arrive guidelines 2 0 updated guidelines for reporting animal research",
+   "access_levels": [
+    "full text"
+   ],
+   "channels": [
+    "fasttrack"
+   ]
+  },
+  "wrk_e6711fb81da13c14": {
+   "work_id": "wrk_e6711fb81da13c14",
+   "records": [
+    "rec_4e87855145a53753"
+   ],
+   "dois": [
+    "10.3389/fpsyg.2015.01549"
+   ],
+   "title": "from pre registration to publication a non technical primer for conducting a meta analysis to synthesize correlational data",
+   "access_levels": [
+    "full text"
+   ],
+   "channels": [
+    "fasttrack"
+   ]
+  },
+  "wrk_aadc1714e5ee88b9": {
+   "work_id": "wrk_aadc1714e5ee88b9",
+   "records": [
+    "rec_ccb39b46daf4bc49"
+   ],
+   "dois": [
+    "10.1136/bmj.h5527"
+   ],
+   "title": "stard 2015 an updated list of essential items for reporting diagnostic accuracy studies",
+   "access_levels": [
+    "full text"
+   ],
+   "channels": [
+    "fasttrack"
+   ]
+  },
+  "wrk_4ebeef9d5c899e11": {
+   "work_id": "wrk_4ebeef9d5c899e11",
+   "records": [
+    "rec_9039ba13da445a61"
+   ],
+   "dois": [
+    "10.1016/j.mri.2012.05.001"
+   ],
+   "title": "3d slicer as an image computing platform for the quantitative imaging network",
+   "access_levels": [
+    "full text"
+   ],
+   "channels": [
+    "fasttrack"
+   ]
+  },
+  "wrk_d8b6348e341fb260": {
+   "work_id": "wrk_d8b6348e341fb260",
+   "records": [
+    "rec_29ba3d643041ee13"
+   ],
+   "dois": [
+    "10.1038/s41586-021-03777-9"
+   ],
+   "title": "reduced sensitivity of sars cov 2 variant delta to antibody neutralization",
+   "access_levels": [
+    "full text"
+   ],
+   "channels": [
+    "fasttrack"
+   ]
+  },
+  "wrk_419e56cf30db61fb": {
+   "work_id": "wrk_419e56cf30db61fb",
+   "records": [
+    "rec_d034a959b3735d15"
+   ],
+   "dois": [
+    "10.1002/jcpy.1209"
+   ],
+   "title": "preregistration is neither sufficient nor necessary for good science",
+   "access_levels": [
+    "extracted fields"
+   ],
+   "channels": [
+    "scholargw"
+   ]
+  },
+  "wrk_490c0645eadd057b": {
+   "work_id": "wrk_490c0645eadd057b",
+   "records": [
+    "rec_adf8d2add966457e"
+   ],
+   "dois": [
+    "10.1111/jopy.12626"
+   ],
+   "title": "transparency and open science at the journal of personality",
+   "access_levels": [
+    "extracted fields"
+   ],
+   "channels": [
+    "scholargw"
+   ]
+  },
+  "wrk_c7f46ab5c422068c": {
+   "work_id": "wrk_c7f46ab5c422068c",
+   "records": [
+    "rec_8d453afda15bc047"
+   ],
+   "dois": [
+    "10.1002/pra2.1076"
+   ],
+   "title": "assessing preregistration deviations a comparative analysis of psychologists and open science experts",
+   "access_levels": [
+    "extracted fields"
+   ],
+   "channels": [
+    "scholargw"
+   ]
+  },
+  "wrk_24d29a16744fdbc8": {
+   "work_id": "wrk_24d29a16744fdbc8",
+   "records": [
+    "rec_8bb1c2853c48ed7c"
+   ],
+   "dois": [
+    "10.1155/2010/919620"
+   ],
+   "title": "current and future trends in magnetic resonance imaging assessments of the response of breast tumors to neoadjuvant chemotherapy",
+   "access_levels": [
+    "extracted fields"
+   ],
+   "channels": [
+    "scholargw"
+   ]
+  },
+  "wrk_3c5460b4bc871c49": {
+   "work_id": "wrk_3c5460b4bc871c49",
+   "records": [
+    "rec_358559177ae1f918"
+   ],
+   "dois": [
+    "10.1111/psyp.70365"
+   ],
+   "title": "brain association studies in 2024 a systematic review of sample sizes and preregistrations",
+   "access_levels": [
+    "extracted fields"
+   ],
+   "channels": [
+    "scholargw"
+   ]
+  },
+  "wrk_422a0f635f4de5e4": {
+   "work_id": "wrk_422a0f635f4de5e4",
+   "records": [
+    "rec_7d22ee3412a1218e"
+   ],
+   "dois": [
+    "10.1111/ajps.12288"
+   ],
+   "title": "differential registration bias in voter file data a sensitivity analysis approach",
+   "access_levels": [
+    "extracted fields"
+   ],
+   "channels": [
+    "scholargw"
+   ]
+  },
+  "wrk_a82ae7de23815cf4": {
+   "work_id": "wrk_a82ae7de23815cf4",
+   "records": [
+    "rec_41f4ba8d956b735a"
+   ],
+   "dois": [
+    "10.1111/ecin.13244"
+   ],
+   "title": "a framework for evaluating reproducibility and replicability in economics",
+   "access_levels": [
+    "extracted fields"
+   ],
+   "channels": [
+    "scholargw"
+   ]
+  },
+  "wrk_17bb1ca571a2ceda": {
+   "work_id": "wrk_17bb1ca571a2ceda",
+   "records": [
+    "rec_379e3d6d945c1e74"
+   ],
+   "dois": [
+    "10.1002/hep.510250420"
+   ],
+   "title": "inherent increase of apoptosis in liver tumors implications for carcinogenesis and tumor regression",
+   "access_levels": [
+    "extracted fields"
+   ],
+   "channels": [
+    "scholargw"
+   ]
+  },
+  "wrk_449dfb3e9435755d": {
+   "work_id": "wrk_449dfb3e9435755d",
+   "records": [
+    "rec_fe41a214026ffd16"
+   ],
+   "dois": [
+    "10.1111/infa.12353"
+   ],
+   "title": "preregistration in infant research a primer",
+   "access_levels": [
+    "extracted fields"
+   ],
+   "channels": [
+    "scholargw"
+   ]
+  },
+  "wrk_7114aa27e28b2464": {
+   "work_id": "wrk_7114aa27e28b2464",
+   "records": [
+    "rec_a0bfbd8f269ad3f5"
+   ],
+   "dois": [
+    "10.1002/bsl.1009"
+   ],
+   "title": "a longitudinal examination of sex offender recidivism prior to and following the implementation of sorn",
+   "access_levels": [
+    "extracted fields"
+   ],
+   "channels": [
+    "scholargw"
+   ]
+  },
+  "wrk_0209cfae6206735e": {
+   "work_id": "wrk_0209cfae6206735e",
+   "records": [
+    "rec_22dacad11d21dc9f"
+   ],
+   "dois": [
+    "10.1002/jcpy.1208"
+   ],
+   "title": "pre registration why and how",
+   "access_levels": [
+    "extracted fields"
+   ],
+   "channels": [
+    "scholargw"
+   ]
+  },
+  "wrk_db92ff28b42172be": {
+   "work_id": "wrk_db92ff28b42172be",
+   "records": [
+    "rec_e168e23d5e619b73"
+   ],
+   "dois": [
+    "10.1111/ajt.15025"
+   ],
+   "title": "determinants of organ donation registration",
+   "access_levels": [
+    "extracted fields"
+   ],
+   "channels": [
+    "scholargw"
+   ]
+  },
+  "wrk_30d0ac37266585c5": {
+   "work_id": "wrk_30d0ac37266585c5",
+   "records": [
+    "rec_ce5fe339b49f88ab"
+   ],
+   "dois": [
+    "10.1002/jcpy.1211"
+   ],
+   "title": "the need for synergy in academic policies an introduction to the dialogue on pre registration",
+   "access_levels": [
+    "extracted fields"
+   ],
+   "channels": [
+    "scholargw"
+   ]
+  },
+  "wrk_f642553ced041b94": {
+   "work_id": "wrk_f642553ced041b94",
+   "records": [
+    "rec_05ae069e188353a5"
+   ],
+   "dois": [
+    "10.1111/ajps.12166"
+   ],
+   "title": "can incarcerated felons be re integrated into the political system results from a field experiment",
+   "access_levels": [
+    "extracted fields"
+   ],
+   "channels": [
+    "scholargw"
+   ]
+  },
+  "wrk_7ca71f3a744de70f": {
+   "work_id": "wrk_7ca71f3a744de70f",
+   "records": [
+    "rec_8e35646c0257b8d2"
+   ],
+   "dois": [
+    "10.1002/cpz1.70299"
+   ],
+   "title": "primer on reproducibility trends tools and some tips and tricks",
+   "access_levels": [
+    "extracted fields"
+   ],
+   "channels": [
+    "scholargw"
+   ]
+  },
+  "wrk_a77ebbe6496c2291": {
+   "work_id": "wrk_a77ebbe6496c2291",
+   "records": [
+    "rec_880cc5929c580fe5"
+   ],
+   "dois": [
+    "10.1002/pds.5079@10.1002/(issn)1099-1557.rwe-collection"
+   ],
+   "title": null,
+   "access_levels": [
+    "extracted fields"
+   ],
+   "channels": [
+    "scholargw"
+   ]
+  },
+  "wrk_3bde45e92f996c76": {
+   "work_id": "wrk_3bde45e92f996c76",
+   "records": [
+    "rec_1936b1efe2d77c2d"
+   ],
+   "dois": [
+    "10.1002/jrsm.1594"
+   ],
+   "title": "robust bayesian meta analysis model averaging across complementary publication bias adjustment methods",
+   "access_levels": [
+    "extracted fields"
+   ],
+   "channels": [
+    "scholargw"
+   ]
+  },
+  "wrk_36a0a74d31a2dbf0": {
+   "work_id": "wrk_36a0a74d31a2dbf0",
+   "records": [
+    "rec_a9120f42b7c80f5c"
+   ],
+   "dois": [
+    "10.1002/pds.5079"
+   ],
+   "title": "improving transparency to build trust in scp real world scp secondary data studies for hypothesis testing why what and how recommendations and a road map from the scp real world scp evidence transparency initiative",
+   "access_levels": [
+    "extracted fields"
+   ],
+   "channels": [
+    "scholargw"
+   ]
+  },
+  "wrk_b3464cfd1995429f": {
+   "work_id": "wrk_b3464cfd1995429f",
+   "records": [
+    "rec_5a25b79f5054b8bf"
+   ],
+   "dois": [
+    "10.1002/jrsm.1512"
+   ],
+   "title": "detecting publication selection bias through excess statistical significance",
+   "access_levels": [
+    "extracted fields"
+   ],
+   "channels": [
+    "scholargw"
+   ]
+  },
+  "wrk_651a789f8cfff6cb": {
+   "work_id": "wrk_651a789f8cfff6cb",
+   "records": [
+    "rec_d2a600397ff4fb80"
+   ],
+   "dois": [
+    "10.1002/icd.2315"
+   ],
+   "title": "adapting open science and pre registration to longitudinal research",
+   "access_levels": [
+    "extracted fields"
+   ],
+   "channels": [
+    "scholargw"
+   ]
+  },
+  "wrk_3347aad230f2212c": {
+   "work_id": "wrk_3347aad230f2212c",
+   "records": [
+    "rec_5718bac2b94af198"
+   ],
+   "dois": [
+    "10.1002/leap.1250"
+   ],
+   "title": "reproducibility crisis the scientific method and the quality of published studies untangling the knot",
+   "access_levels": [
+    "extracted fields"
+   ],
+   "channels": [
+    "scholargw"
+   ]
+  },
+  "wrk_3102719ed620d0ca": {
+   "work_id": "wrk_3102719ed620d0ca",
+   "records": [
+    "rec_377e0d75ff51291e"
+   ],
+   "dois": [
+    "10.1002/sim.6525"
+   ],
+   "title": "publication bias in meta analyses from the cochrane database of systematic reviews",
+   "access_levels": [
+    "extracted fields"
+   ],
+   "channels": [
+    "scholargw"
+   ]
+  },
+  "wrk_32ce5f7229590ced": {
+   "work_id": "wrk_32ce5f7229590ced",
+   "records": [
+    "rec_9baf85964fd4c9f3"
+   ],
+   "dois": [
+    "10.1002/ejsp.2858"
+   ],
+   "title": "on the predicted replicability of two decades of experimental research on system justification a z curve analysis",
+   "access_levels": [
+    "extracted fields"
+   ],
+   "channels": [
+    "scholargw"
+   ]
+  },
+  "wrk_e37f9bcea0ca3c16": {
+   "work_id": "wrk_e37f9bcea0ca3c16",
+   "records": [
+    "rec_cb45c512d9184f08"
+   ],
+   "dois": [
+    "10.1002/cpp.70330"
+   ],
+   "title": "imagery interventions and cognitive behavioural therapy for psychological complaints related to bullying a systematic review and meta analysis",
+   "access_levels": [
+    "extracted fields"
+   ],
+   "channels": [
+    "scholargw"
+   ]
+  },
+  "wrk_9faf98c24dbf01b5": {
+   "work_id": "wrk_9faf98c24dbf01b5",
+   "records": [
+    "rec_e4e8ba4fab9c7f2c"
+   ],
+   "dois": [
+    "10.1111/cogs.70127"
+   ],
+   "title": "does body specificity stand on solid ground i z i curving the association between emotional valence and lateral space",
+   "access_levels": [
+    "extracted fields"
+   ],
+   "channels": [
+    "scholargw"
+   ]
+  },
+  "wrk_5b8feac4c8353cb5": {
+   "work_id": "wrk_5b8feac4c8353cb5",
+   "records": [
+    "rec_443a2e0c2ac5c454"
+   ],
+   "dois": [
+    "10.1111/itor.70207"
+   ],
+   "title": "systematic flaws uncovering biases and replicability challenges in literature reviews on efficiency of education",
+   "access_levels": [
+    "extracted fields"
+   ],
+   "channels": [
+    "scholargw"
+   ]
+  },
+  "wrk_79fd4e6e674447d8": {
+   "work_id": "wrk_79fd4e6e674447d8",
+   "records": [
+    "rec_11bcc473f22e28b2",
+    "rec_ac56f9504edd923a"
+   ],
+   "dois": [
+    "10.31222/osf.io/fhdbs",
+    "10.3758/s13428-023-02277-0"
+   ],
+   "title": "preregistration in practice a comparison of preregistered and non preregistered studies in psychology",
+   "access_levels": [
+    "abstract only"
+   ],
+   "channels": [
+    "consensus",
+    "scispace"
+   ]
+  },
+  "wrk_9f5177f70b22311e": {
+   "work_id": "wrk_9f5177f70b22311e",
+   "records": [
+    "rec_b5b199c6c58f1566"
+   ],
+   "dois": [
+    "10.23668/psycharchives.8305"
+   ],
+   "title": "durchgefu hrt wie geplant ein detaillierter vergleich zwischen studien und ihren pra registrierten pla nen",
+   "access_levels": [
+    "abstract only"
+   ],
+   "channels": [
+    "scispace"
+   ]
+  },
+  "wrk_47e8efa9043b01f6": {
+   "work_id": "wrk_47e8efa9043b01f6",
+   "records": [
+    "rec_34a251e9a7b91a93",
+    "rec_40036086ec3c442f",
+    "rec_44caff42552c4a3c",
+    "rec_d70f4cb6a94d086a"
+   ],
+   "dois": [
+    "10.20982/tqmp.16.4.p376",
+    "10.22541/au.160349187.73858736/v1",
+    "10.23668/psycharchives.4839",
+    "10.48550/arxiv.2010.10513"
+   ],
+   "title": "does preregistration improve the credibility of research findings",
+   "access_levels": [
+    "abstract only"
+   ],
+   "channels": [
+    "scispace"
+   ]
+  },
+  "wrk_001917bf9e993ae5": {
+   "work_id": "wrk_001917bf9e993ae5",
+   "records": [
+    "rec_ea9db6fd4b0febab"
+   ],
+   "dois": [
+    "10.20378/irb-105013"
+   ],
+   "title": "die vertrauenswu rdigkeit von replikationen der einfluss von pra registrierungen auf den replikationserfolg",
+   "access_levels": [
+    "abstract only"
+   ],
+   "channels": [
+    "scispace"
+   ]
+  },
+  "wrk_487f6615e61fc245": {
+   "work_id": "wrk_487f6615e61fc245",
+   "records": [
+    "rec_da4f07b9b3ae4318"
+   ],
+   "dois": [
+    "10.1038/s41562-023-01749-9"
+   ],
+   "title": "retracted article high replicability of newly discovered social behavioural findings is achievable",
+   "access_levels": [
+    "abstract only"
+   ],
+   "channels": [
+    "scispace"
+   ]
+  },
+  "wrk_cd69ac4961d8601e": {
+   "work_id": "wrk_cd69ac4961d8601e",
+   "records": [
+    "rec_2528928613689f68"
+   ],
+   "dois": [
+    "10.1136/ebm-2022-ebmlive.15"
+   ],
+   "title": "125 estimating the replicability of highly cited clinical research between 2004 and 2018",
+   "access_levels": [
+    "abstract only"
+   ],
+   "channels": [
+    "scispace"
+   ]
+  },
+  "wrk_5eeb85b852724986": {
+   "work_id": "wrk_5eeb85b852724986",
+   "records": [
+    "rec_8a490be518960912"
+   ],
+   "dois": [
+    "10.7910/dvn/f8c4yl"
+   ],
+   "title": "replication data for do pre registration and pre analysis plans reduce p hacking and publication bias evidence from 15 992 test statistics and suggestions for improvement",
+   "access_levels": [
+    "abstract only"
+   ],
+   "channels": [
+    "scispace"
+   ]
+  },
+  "wrk_5d2fedd2f8978800": {
+   "work_id": "wrk_5d2fedd2f8978800",
+   "records": [
+    "rec_f5a1aa7c88ddf39d"
+   ],
+   "dois": [
+    "10.1371/journal.pbio.3000690"
+   ],
+   "title": "preregistration of exploratory research learning from the golden age of discovery",
+   "access_levels": [
+    "abstract only"
+   ],
+   "channels": [
+    "scispace"
+   ]
+  },
+  "wrk_e8e1f6d5790c8950": {
+   "work_id": "wrk_e8e1f6d5790c8950",
+   "records": [
+    "rec_77010ef85a134152"
+   ],
+   "dois": [
+    "10.31222/osf.io/8psw2"
+   ],
+   "title": "successes and failures of replications a meta analysis of independent replication studies based on the osf registries",
+   "access_levels": [
+    "abstract only"
+   ],
+   "channels": [
+    "scispace"
+   ]
+  },
+  "wrk_14f849d669a5f8ec": {
+   "work_id": "wrk_14f849d669a5f8ec",
+   "records": [
+    "rec_5d3431b5030247b4",
+    "rec_a5b71c35af875875"
+   ],
+   "dois": [
+    "10.1177/10731911241275256",
+    "10.31234/osf.io/g7dn2"
+   ],
+   "title": "on the use and misuses of preregistration a reply to klonsky 2024",
+   "access_levels": [
+    "abstract only"
+   ],
+   "channels": [
+    "scispace"
+   ]
+  },
+  "wrk_e29b95ef80c23c1a": {
+   "work_id": "wrk_e29b95ef80c23c1a",
+   "records": [
+    "rec_47192402b86e1d4c"
+   ],
+   "dois": [
+    "10.1371/journal.pbio.3000693"
+   ],
+   "title": "frontloading selectivity a third way in scientific publishing",
+   "access_levels": [
+    "abstract only"
+   ],
+   "channels": [
+    "scispace"
+   ]
+  },
+  "wrk_6f90ce6d556e7b90": {
+   "work_id": "wrk_6f90ce6d556e7b90",
+   "records": [
+    "rec_8a9ec68c0319975f",
+    "rec_b18277d267060d7b",
+    "rec_e3be381e27b20c26"
+   ],
+   "dois": [
+    "10.6084/m9.figshare.3997821",
+    "10.6084/m9.figshare.3997821.v1",
+    "10.6084/m9.figshare.3997821.v3"
+   ],
+   "title": "on the reproducibility of psychological science",
+   "access_levels": [
+    "abstract only"
+   ],
+   "channels": [
+    "scispace"
+   ]
+  },
+  "wrk_46d970501ff4f40c": {
+   "work_id": "wrk_46d970501ff4f40c",
+   "records": [
+    "rec_58198621cec9f702"
+   ],
+   "dois": [],
+   "title": "many labs 5 testing pre data collection peer review as an intervention to increase replicability",
+   "access_levels": [
+    "abstract only"
+   ],
+   "channels": [
+    "consensus"
+   ]
+  },
+  "wrk_4a1892168a939d51": {
+   "work_id": "wrk_4a1892168a939d51",
+   "records": [
+    "rec_490992959f73a6ae"
+   ],
+   "dois": [],
+   "title": "pre registration weighing costs and benefits for researchers",
+   "access_levels": [
+    "abstract only"
+   ],
+   "channels": [
+    "consensus"
+   ]
+  },
+  "wrk_337779999fe10900": {
+   "work_id": "wrk_337779999fe10900",
+   "records": [
+    "rec_4cb705de8ad1c90e"
+   ],
+   "dois": [],
+   "title": "a registered report of preregistration practices in studies of electroencephalogram eeg and event related potentials erps a first look at accessibility adherence transparency and selection bias",
+   "access_levels": [
+    "abstract only"
+   ],
+   "channels": [
+    "consensus"
+   ]
+  },
+  "wrk_05b2efb4183a4fbb": {
+   "work_id": "wrk_05b2efb4183a4fbb",
+   "records": [
+    "rec_9e45129d33383800"
+   ],
+   "dois": [],
+   "title": "campbell s law explains the replication crisis pre registration badges are history repeating",
+   "access_levels": [
+    "abstract only"
+   ],
+   "channels": [
+    "consensus"
+   ]
+  },
+  "wrk_6c582d4905f8c37d": {
+   "work_id": "wrk_6c582d4905f8c37d",
+   "records": [
+    "rec_cb8c4d3e99127b69"
+   ],
+   "dois": [],
+   "title": "preregistration and reproducibility",
+   "access_levels": [
+    "abstract only"
+   ],
+   "channels": [
+    "consensus"
+   ]
+  },
+  "wrk_4933ad4467c4d399": {
+   "work_id": "wrk_4933ad4467c4d399",
+   "records": [
+    "rec_c0c8ca3316b96dce"
+   ],
+   "dois": [],
+   "title": "pre analysis plans have limited upside especially where replications are feasible",
+   "access_levels": [
+    "abstract only"
+   ],
+   "channels": [
+    "consensus"
+   ]
+  },
+  "wrk_56e3013588288502": {
+   "work_id": "wrk_56e3013588288502",
+   "records": [
+    "rec_21136350ba9fcd28"
+   ],
+   "dois": [],
+   "title": "open science practices in gambling research publications 2016 2019 a scoping review",
+   "access_levels": [
+    "abstract only"
+   ],
+   "channels": [
+    "consensus"
+   ]
+  },
+  "wrk_cc2d6f683df3d072": {
+   "work_id": "wrk_cc2d6f683df3d072",
+   "records": [
+    "rec_3db73ad26989f4c0"
+   ],
+   "dois": [],
+   "title": "registered report survey on attitudes and experiences regarding preregistration in psychological research",
+   "access_levels": [
+    "abstract only"
+   ],
+   "channels": [
+    "consensus"
+   ]
+  },
+  "wrk_f91b7f17ee1f5e66": {
+   "work_id": "wrk_f91b7f17ee1f5e66",
+   "records": [
+    "rec_d773cacbd4d13c0f"
+   ],
+   "dois": [],
+   "title": "do preregistration and preanalysis plans reduce p hacking and publication bias evidence from 15 992 test statistics and suggestions for improvement",
+   "access_levels": [
+    "abstract only"
+   ],
+   "channels": [
+    "consensus"
+   ]
+  },
+  "wrk_45de9567fed14e11": {
+   "work_id": "wrk_45de9567fed14e11",
+   "records": [
+    "rec_967dd4b929cfe802"
+   ],
+   "dois": [],
+   "title": "comparing meta analyses and preregistered multiple laboratory replication projects",
+   "access_levels": [
+    "abstract only"
+   ],
+   "channels": [
+    "consensus"
+   ]
+  },
+  "wrk_c46d015f631b4a3b": {
+   "work_id": "wrk_c46d015f631b4a3b",
+   "records": [
+    "rec_a8c63fadd8685051"
+   ],
+   "dois": [],
+   "title": "the potential of preregistration in psychology assessing preregistration producibility and preregistration study consistency",
+   "access_levels": [
+    "abstract only"
+   ],
+   "channels": [
+    "consensus"
+   ]
+  },
+  "wrk_7222f54700665b67": {
+   "work_id": "wrk_7222f54700665b67",
+   "records": [
+    "rec_fcf0464c8483c5be"
+   ],
+   "dois": [],
+   "title": "do pre registration and pre analysis plans reduce p hacking and publication bias",
+   "access_levels": [
+    "abstract only"
+   ],
+   "channels": [
+    "consensus"
+   ]
+  },
+  "wrk_bcec5f7f39356080": {
+   "work_id": "wrk_bcec5f7f39356080",
+   "records": [
+    "rec_012adc3db9845e4a"
+   ],
+   "dois": [],
+   "title": "selective hypothesis reporting in psychology comparing preregistrations and corresponding publications",
+   "access_levels": [
+    "abstract only"
+   ],
+   "channels": [
+    "consensus"
+   ]
+  },
+  "wrk_61b95ca05b748d4a": {
+   "work_id": "wrk_61b95ca05b748d4a",
+   "records": [
+    "rec_50930a55512bf917"
+   ],
+   "dois": [],
+   "title": "registered reports and replications an ongoing journal of school psychology initiative",
+   "access_levels": [
+    "abstract only"
+   ],
+   "channels": [
+    "consensus"
+   ]
+  },
+  "wrk_f5812a3d73dfb397": {
+   "work_id": "wrk_f5812a3d73dfb397",
+   "records": [
+    "rec_0fff73500264fa76"
+   ],
+   "dois": [],
+   "title": "preregistration of psychology meta analyses a cross sectional study of prevalence and practice",
+   "access_levels": [
+    "abstract only"
+   ],
+   "channels": [
+    "consensus"
+   ]
+  }
+ },
+ "link_evidence": {
+  "relation": [
+   {
+    "a": "10.48550/arxiv.2010.10513",
+    "b": "10.20982/tqmp.16.4.p376",
+    "type": "IsVersionOf"
+   },
+   {
+    "a": "10.22541/au.160349187.73858736/v1",
+    "b": "10.20982/tqmp.16.4.p376",
+    "type": "is-preprint-of"
+   },
+   {
+    "a": "10.20982/tqmp.16.4.p376",
+    "b": "10.22541/au.160349187.73858736/v1",
+    "type": "has-preprint"
+   },
+   {
+    "a": "10.6084/m9.figshare.3997821.v3",
+    "b": "10.6084/m9.figshare.3997821",
+    "type": "IsPreviousVersionOf"
+   },
+   {
+    "a": "10.6084/m9.figshare.3997821.v1",
+    "b": "10.6084/m9.figshare.3997821",
+    "type": "IsPreviousVersionOf"
+   }
+  ],
+  "title_guarded": [
+   {
+    "a": "rec_8501bd22bb965820",
+    "b": "rec_995f5c5ec743f79c",
+    "title": "strengthening the reporting of observational studies in epidemiology strobe expl",
+    "a_doi": "10.1371/journal.pmed.0040297",
+    "b_doi": "10.1016/j.ijsu.2014.07.014",
+    "guard": "author"
+   },
+   {
+    "a": "rec_11bcc473f22e28b2",
+    "b": "rec_ac56f9504edd923a",
+    "title": "preregistration in practice a comparison of preregistered and non preregistered ",
+    "a_doi": "10.31222/osf.io/fhdbs",
+    "b_doi": "10.3758/s13428-023-02277-0",
+    "guard": "author"
+   },
+   {
+    "a": "rec_44caff42552c4a3c",
+    "b": "rec_34a251e9a7b91a93",
+    "title": "does preregistration improve the credibility of research findings",
+    "a_doi": "10.48550/arxiv.2010.10513",
+    "b_doi": "10.23668/psycharchives.4839",
+    "guard": "author"
+   },
+   {
+    "a": "rec_44caff42552c4a3c",
+    "b": "rec_40036086ec3c442f",
+    "title": "does preregistration improve the credibility of research findings",
+    "a_doi": "10.48550/arxiv.2010.10513",
+    "b_doi": "10.22541/au.160349187.73858736/v1",
+    "guard": "author"
+   },
+   {
+    "a": "rec_44caff42552c4a3c",
+    "b": "rec_d70f4cb6a94d086a",
+    "title": "does preregistration improve the credibility of research findings",
+    "a_doi": "10.48550/arxiv.2010.10513",
+    "b_doi": "10.20982/tqmp.16.4.p376",
+    "guard": "author"
+   },
+   {
+    "a": "rec_34a251e9a7b91a93",
+    "b": "rec_40036086ec3c442f",
+    "title": "does preregistration improve the credibility of research findings",
+    "a_doi": "10.23668/psycharchives.4839",
+    "b_doi": "10.22541/au.160349187.73858736/v1",
+    "guard": "author"
+   },
+   {
+    "a": "rec_34a251e9a7b91a93",
+    "b": "rec_d70f4cb6a94d086a",
+    "title": "does preregistration improve the credibility of research findings",
+    "a_doi": "10.23668/psycharchives.4839",
+    "b_doi": "10.20982/tqmp.16.4.p376",
+    "guard": "author"
+   },
+   {
+    "a": "rec_40036086ec3c442f",
+    "b": "rec_d70f4cb6a94d086a",
+    "title": "does preregistration improve the credibility of research findings",
+    "a_doi": "10.22541/au.160349187.73858736/v1",
+    "b_doi": "10.20982/tqmp.16.4.p376",
+    "guard": "author"
+   },
+   {
+    "a": "rec_5d3431b5030247b4",
+    "b": "rec_a5b71c35af875875",
+    "title": "on the use and misuses of preregistration a reply to klonsky 2024",
+    "a_doi": "10.1177/10731911241275256",
+    "b_doi": "10.31234/osf.io/g7dn2",
+    "guard": "author"
+   },
+   {
+    "a": "rec_e3be381e27b20c26",
+    "b": "rec_8a9ec68c0319975f",
+    "title": "on the reproducibility of psychological science",
+    "a_doi": "10.6084/m9.figshare.3997821",
+    "b_doi": "10.6084/m9.figshare.3997821.v3",
+    "guard": "author"
+   }
+  ],
+  "title_unguarded": [],
+  "rejected": [
+   {
+    "a": "rec_e3be381e27b20c26",
+    "b": "rec_b18277d267060d7b",
+    "title": "on the reproducibility of psychological science",
+    "a_doi": "10.6084/m9.figshare.3997821",
+    "b_doi": "10.6084/m9.figshare.3997821.v1",
+    "a_first": "johnson",
+    "b_first": "valen e. johnson",
+    "a_year": 2021,
+    "b_year": 2016
+   },
+   {
+    "a": "rec_8a9ec68c0319975f",
+    "b": "rec_b18277d267060d7b",
+    "title": "on the reproducibility of psychological science",
+    "a_doi": "10.6084/m9.figshare.3997821.v3",
+    "b_doi": "10.6084/m9.figshare.3997821.v1",
+    "a_first": "johnson",
+    "b_first": "valen e. johnson",
+    "a_year": 2020,
+    "b_year": 2016
+   }
+  ]
+ },
+ "stats": {
+  "records": 93,
+  "works": 85,
+  "redundant_records": 8,
+  "clusters": 5,
+  "largest_cluster": 4,
+  "links_by_relation": 5,
+  "links_by_title_guarded": 10,
+  "links_by_title_unguarded": 0,
+  "title_collisions_rejected": 2,
+  "records_no_doi": 15,
+  "records_unlinkable": 0,
+  "enrichment": {
+   "crossref": 70,
+   "datacite": 7,
+   "absent": 1,
+   "error": 0,
+   "skipped": 0
+  },
+  "works_with_mixed_access": 0
+ }
+}
