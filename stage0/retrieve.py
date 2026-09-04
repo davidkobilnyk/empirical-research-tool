@@ -181,7 +181,40 @@ def collate(per_arm):
     return unique, stats
 
 
-def coverage_note(question, queries, stats, integrity, channels_used, unavailable):
+def linkage_section(lk):
+    """Report records and works separately: retrieval is counted in records,
+    independence in works (spec 27 / X-3)."""
+    L = ["", "## Source identity (linkage)", "",
+         f"{lk['records']} source records resolve to **{lk['works']} distinct works** "
+         f"({lk['redundant_records']} redundant records across {lk['clusters']} clusters; "
+         f"largest cluster {lk['largest_cluster']}).",
+         "",
+         "Counts of *sources* above describe retrieval. Any statement about independent "
+         "support must count works: copies of one study share its data, authors and "
+         "analysis, and the error from counting records is one-directional — duplicates "
+         "only ever add.",
+         "",
+         f"- linked by version/identity relation: {lk['links_by_relation']}",
+         f"- linked by title with an author or year guard: {lk['links_by_title_guarded']}",
+         f"- linked by title with no guard available: {lk['links_by_title_unguarded']}",
+         f"- title collisions rejected by the guard: {lk['title_collisions_rejected']}",
+         f"- records with no DOI: {lk['records_no_doi']}; records with neither DOI nor "
+         f"title, so unlinkable: {lk['records_unlinkable']}"]
+    if lk.get("works_with_mixed_access"):
+        L += ["",
+              f"**{lk['works_with_mixed_access']} work(s) carry more than one access level** "
+              "across their copies. Under spec 24 an abstract-only source cannot be "
+              "downgraded while X-2 takes the maximum per-source tier, so the least "
+              "readable copy can set the tier. Grade these at work level."]
+    L += ["",
+          "Not covered: work identity is narrower than independence. Two different papers "
+          "from one group on one dataset share data and authors and are not independent; "
+          "no title-or-DOI linkage detects that."]
+    return L
+
+
+def coverage_note(question, queries, stats, integrity, channels_used, unavailable,
+                  linkage=None):
     """spec 47: what was searched, what it yielded, and what was not reachable."""
     L = [f"# Coverage note — {question}", "",
          f"Run {datetime.date.today().isoformat()}. Stage 0: retrieval only, no grades.", "",
@@ -215,6 +248,8 @@ def coverage_note(question, queries, stats, integrity, channels_used, unavailabl
         if tally.get("unknown"):
             L += ["", "Sources with status *unknown* had a failed lookup. Unknown is not clean; "
                   "re-check before the audit gate."]
+    if linkage:
+        L += linkage_section(linkage)
     if unavailable:
         L += ["", "## Not reachable this run", ""]
         for name, why in sorted(unavailable.items()):

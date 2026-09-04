@@ -95,6 +95,37 @@ Four statuses are distinguished, and the distinctions carry weight: `clean`,
 registration agency, which is a coverage limit rather than a defect in the
 source. Anything genuinely unverifiable stays `unknown`, never `clean`.
 
+### Source identity: records are not works
+
+```bash
+python stage0/link.py --link runs/<run-dir>      # enrich, cluster, report both counts
+```
+
+A DOI names a publication artifact, not a work. One study can hold a preprint
+DOI, a repository-copy DOI, another preprint-server DOI and a journal DOI, and
+distinct DOIs never collide — so DOI-keyed deduplication leaves four
+independent-looking sources. In the first live run, 80 records were 75 works.
+
+`link.py` attaches a derived `record_id` and a `work_id`; it never merges
+records, because each carries its own access level and retrieval route, which
+spec 24 depends on. Clustering uses version/identity relations from both
+registries **and** identical canonical titles seconded by first-author surname
+or a close year — neither signal suffices alone. Relations catch
+preprint-to-journal chains but miss co-publication (the STROBE guideline appears
+in two journals seven years apart, linked only by author); titles catch that but
+would merge distinct works sharing a generic title, hence the guard. A link made
+with no guard available is recorded as `unguarded` rather than passed off as
+verified.
+
+Registry enrichment also rescues the records whose channel returned no title:
+all 23 such records in the first run gained a canonical title from their DOI, so
+none were unlinkable.
+
+Then count at the level the question is about — records for retrieval and
+saturation, works for independence (spec 27 / X-3). **Work identity is still
+narrower than independence:** two different papers from one group on one dataset
+share data and authors, and no title-or-DOI linkage will say so.
+
 `tests/test_replay.py` pins the parsers to the payloads in `records/`. The
 connectors are not reproducible, so those payloads are the fixture and the
 counts are the contract — a failure means a parser changed, not that the

@@ -13,6 +13,7 @@ DOI_PATTERN = r"10\.\d{4,9}/\S+"
 PREFIX_PATTERN = r"^(?:https?://(?:dx\.)?doi\.org/|doi:\s*|DOI:\s*)"
 TRAILING_PUNCT = ".,;:'\"\u201d\u2019!?"
 CROSSREF_PACE = {"last": 0.0, "interval": 0.25}
+DATACITE_PACE = {"last": 0.0, "interval": 0.2}
 
 
 def normalize_doi(s):
@@ -197,6 +198,60 @@ def crossref_status(doi, email=None, timeout=30, attempts=3):
                 continue
             return ("error", type(e).__name__)
     return ("error", "exhausted attempts")
+
+
+def datacite_record(doi, timeout=30, attempts=3):
+    """Normalised DataCite record for a DOI, or None.
+
+    DataCite is the registration agency for arXiv, Zenodo, PsychArchives and most
+    repository DOIs — the ones Crossref returns 404 for. Creators and publication
+    year are returned because same-work linkage needs an author or year guard on
+    a title match; without them a title collision has nothing holding it back.
+
+    Returns {exists, state, type, version, title, creators, year, relations} where
+    relations is [(relationType, relatedIdentifier), ...].
+    """
+    d = normalize_doi(doi)
+    if not d:
+        return None
+    u = "https://api.datacite.org/dois/" + urllib.parse.quote(d)
+    for attempt in range(attempts):
+        gap = DATACITE_PACE["interval"] - (time.time() - DATACITE_PACE["last"])
+        if gap > 0:
+            time.sleep(gap)
+        DATACITE_PACE["last"] = time.time()
+        try:
+            req = urllib.request.Request(u, headers={"Accept": "application/json",
+                                                     "User-Agent": "doi-source-identity/0.1"})
+            with urllib.request.urlopen(req, timeout=timeout) as fh:
+                a = json.load(fh)["data"]["attributes"]
+            fams = []
+            for c in (a.get("creators") or []):
+                fam = c.get("familyName")
+                if not fam and c.get("name"):
+                    fam = str(c["name"]).split(",")[0].strip()
+                if fam:
+                    fams.append(fam)
+            return {"exists": True, "state": a.get("state"),
+                    "type": (a.get("types") or {}).get("resourceTypeGeneral"),
+                    "version": a.get("version"),
+                    "title": (a.get("titles") or [{}])[0].get("title"),
+                    "creators": fams, "year": a.get("publicationYear"),
+                    "relations": [(r.get("relationType"), r.get("relatedIdentifier"))
+                                  for r in (a.get("relatedIdentifiers") or [])]}
+        except urllib.error.HTTPError as e:
+            if e.code == 404:
+                return {"exists": False}
+            if e.code in (429, 500, 502, 503) and attempt < attempts - 1:
+                time.sleep(2 ** attempt)
+                continue
+            return None
+        except Exception:
+            if attempt < attempts - 1:
+                time.sleep(2 ** attempt)
+                continue
+            return None
+    return None
 
 
 def retraction_status(doi, email=None):
