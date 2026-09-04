@@ -57,6 +57,7 @@ import hashlib
 import importlib.util
 import json
 import os
+import re
 import sys
 from collections import defaultdict
 
@@ -73,6 +74,30 @@ VERSION_RELATIONS = {
     "IsIdenticalTo", "IsVariantFormOf", "IsOriginalFormOf", "IsTranslationOf",
 }
 YEAR_WINDOW = 2
+
+
+def surname(name):
+    """Comparable surname from either registry's format.
+
+    Crossref supplies a parsed `family` ("Johnson"); DataCite often supplies only
+    a display name ("Valen E. Johnson"). Comparing the raw strings makes those
+    unequal, which silently REJECTS genuine same-work pairs — the guard then
+    looks like it is discriminating when it is failing. Compare last tokens.
+    """
+    if not name:
+        return None
+    toks = [t for t in "".join(c if (c.isalpha() or c.isspace() or c == "-") else " "
+                              for c in str(name).lower()).split() if t]
+    return toks[-1] if toks else None
+
+
+def strip_doi_version(doi):
+    """figshare and Zenodo mint per-version DOIs as <base>.v1, <base>.v2 …
+
+    Same base, same work. This is deterministic and needs no metadata, so it
+    runs before any title or author reasoning.
+    """
+    return re.sub(r"\.v\d+$", "", doi or "")
 
 
 def identity():
@@ -174,12 +199,23 @@ def link(sources, meta, D):
         if s.get("doi_normalised"):
             doi_to_rec[s["doi_normalised"]].append(s["record_id"])
 
-    evidence = {"relation": [], "title_guarded": [], "title_unguarded": [], "rejected": []}
+    evidence = {"relation": [], "title_guarded": [], "title_unguarded": [],
+                "doi_version": [], "rejected": []}
 
     # 1. same DOI across channels (retrieval may already have merged these)
     for d, recs in doi_to_rec.items():
         for r in recs[1:]:
             union(recs[0], r)
+
+    # 2. per-version DOIs of one deposit: <base>, <base>.v1, <base>.v3
+    by_base = defaultdict(list)
+    for d in doi_to_rec:
+        by_base[strip_doi_version(d)].append(d)
+    for base, ds in by_base.items():
+        if len(ds) > 1:
+            for other in sorted(ds)[1:]:
+                union(doi_to_rec[sorted(ds)[0]][0], doi_to_rec[other][0])
+                evidence["doi_version"].append({"base": base, "a": sorted(ds)[0], "b": other})
 
     # 2. version/identity relations, where both ends are in this run
     for d, m in meta.items():
@@ -202,7 +238,10 @@ def link(sources, meta, D):
                 a, b = group[i], group[j]
                 ma = meta.get(a.get("doi_normalised")) or {}
                 mb = meta.get(b.get("doi_normalised")) or {}
-                same_author = ma.get("first") and mb.get("first") and ma["first"] == mb["first"]
+                sa, sb = surname(ma.get("first")), surname(mb.get("first"))
+                shared_any = ({surname(x) for x in (ma.get("authors") or [])} &
+                              {surname(x) for x in (mb.get("authors") or [])}) - {None}
+                same_author = bool((sa and sb and sa == sb) or shared_any)
                 close_year = (ma.get("year") and mb.get("year")
                               and abs(ma["year"] - mb["year"]) <= YEAR_WINDOW)
                 no_guard_available = not (ma.get("first") and mb.get("first")) and \
