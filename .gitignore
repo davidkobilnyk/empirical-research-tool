@@ -8,3 +8,6 @@ handoff/
 __pycache__/
 .venv/
 .DS_Store
+
+# Run outputs are derived; regenerate with stage0/retrieve.py
+runs/

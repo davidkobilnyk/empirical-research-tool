@@ -47,6 +47,39 @@ python build/build_specs_v3.py       # specification from the v2 text
 Amending the checklists is a **rubric version change**; amending the
 specification is not.
 
+## Running Stage 0
+
+`stage0/retrieve.py` searches, parses, deduplicates, and writes a coverage note.
+It produces no grades — that is Stage 1.
+
+```bash
+# offline: re-parse the dated payloads in records/ and check the numbers hold
+python tests/test_replay.py
+python stage0/retrieve.py --replay records/stage0-retrieval-raw-2026-09-04.json
+```
+
+Live retrieval needs a kernel with connector access, and takes the MCP callable
+and a `{channel: server}` mapping as arguments:
+
+```python
+from stage0.retrieve import run_live
+outdir, stats = run_live("Does pre-registration predict higher replication rates?",
+                         mcp=host.mcp,
+                         servers={"fasttrack": "...", "consensus": "...",
+                                  "scispace": "...", "scholargw": "..."})
+```
+
+Connector server identifiers are **not** hardcoded: they are specific to one
+environment's connector attachments, so they are resolved at the call site. A
+channel that is unconfigured or that raises is recorded in the coverage note as
+unavailable rather than dropped, because a retrieval failure that degrades
+silently becomes a permanent evidence gap (spec 57).
+
+`tests/test_replay.py` pins the parsers to the payloads in `records/`. The
+connectors are not reproducible, so those payloads are the fixture and the
+counts are the contract — a failure means a parser changed, not that the
+literature moved.
+
 ## Status
 
 Design is largely complete; **the pipeline has not been run end to end.** The
