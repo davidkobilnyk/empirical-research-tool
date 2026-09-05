@@ -94,7 +94,14 @@ def query_set_overlap(per_set):
 
 
 # ----------------------------------------------------------------- parsers
-# One parser per channel: connector payload -> [{doi, title, access, extra}].
+# One parser per channel: connector payload -> [{doi, title, access, text, extra}].
+#
+# `text` is whatever the channel actually returned about the source — an abstract,
+# an abstract snippet, or a retrieved passage. Retaining it is not optional: it is
+# the only input extraction has, and spec 33's audit asks whether a source's
+# RETRIEVED TEXT supports the claim attributed to it, which cannot be checked
+# against a title. An earlier version discarded it, which blocked extraction
+# entirely while looking like a complete retrieval layer.
 # Shapes differ materially: two return dicts with a results array, one returns
 # passages that must be collapsed to articles, and two return prose.
 
@@ -104,6 +111,7 @@ def parse_records_array(payload):
         oa = r.get("oa")
         out.append({"doi": r.get("doi"), "title": r.get("title"),
                     "access": "full text" if oa else "abstract only",
+                    "text": r.get("abstract_snippet") or r.get("abstract") or "",
                     "extra": {k: r.get(k) for k in ("year", "venue", "cited_by_count", "url")}})
     return out
 
@@ -117,8 +125,15 @@ def parse_passages(payload):
         if not key or key in seen:
             continue
         seen.add(key)
-        out.append({"doi": r.get("doi"), "title": md.get("title"),
+        # this channel sends no title field; a citation line in additionalMetadata
+        # is the only offline fallback. Canonical titles arrive later from linkage
+        # enrichment, which is where display titles should be taken from.
+        cite = str(md.get("additionalMetadata") or "")
+        m_cite = re.search(r"citationLine'?\s*:\s*'([^']{10,200})", cite)
+        out.append({"doi": r.get("doi"),
+                    "title": md.get("title") or (m_cite.group(1) if m_cite else None),
                     "access": "extracted fields",   # passages, not whole text
+                    "text": r.get("text") or "",
                     "extra": {"year": md.get("year"), "passages": 1}})
     return out
 
@@ -128,17 +143,38 @@ def parse_numbered_with_doi(payload):
     numbered lines inside abstracts would otherwise be counted as records."""
     text = payload if isinstance(payload, str) else json.dumps(payload)
     out = []
-    for title, doi in re.findall(r"\n\s*\d+\.\s*(.+?)\n.*?DOI:\s*(\S+)", text, re.S):
-        out.append({"doi": doi, "title": title.split("\n")[0].strip(),
-                    "access": "abstract only", "extra": {}})
+    # capture the block body too: the abstract sits between the title and the DOI
+    for block in re.findall(r"\n\s*\d+\.\s*(.+?)(?=\n\s*\d+\.\s|\Z)", text, re.S):
+        m = re.search(r"DOI:\s*(\S+)", block)
+        if not m:
+            continue
+        lines = [l.strip() for l in block.split("\n") if l.strip()]
+        title = re.sub(r"^\d+[\.\)]?\s+", "", lines[0]) if lines else ""
+        # the abstract may sit before or after the DOI line depending on channel;
+        # take whichever side has prose and strip the field labels
+        doi_line = next((i for i, l in enumerate(lines) if l.startswith("DOI:")), len(lines))
+        after = " ".join(lines[doi_line + 1:])
+        before = " ".join(lines[1:doi_line])
+        abstract = after if len(after) > len(before) else before
+        abstract = re.sub(r"^(Abstract|Authors?|Journal|Year|Citations?)\s*:?\s*", "",
+                          abstract).strip()
+        out.append({"doi": m.group(1), "title": title,
+                    "access": "abstract only", "text": abstract[:4000], "extra": {}})
     return out
 
 
 def parse_numbered_links(payload):
     """Prose with `[n] [Title](url)` and no DOIs — title is the only identity."""
     text = payload if isinstance(payload, str) else json.dumps(payload)
-    return [{"doi": None, "title": t.strip(), "access": "abstract only", "extra": {}}
-            for t in re.findall(r"\[\d+\]\s*\[([^\]]+)\]", text)]
+    out = []
+    for block in re.split(r"\n(?=\[\d+\]\s*\[)", text):
+        m = re.match(r"\[\d+\]\s*\[([^\]]+)\]", block.strip())
+        if not m:
+            continue
+        body = re.sub(r"^\[\d+\]\s*\[[^\]]+\]\([^)]*\)", "", block.strip())
+        out.append({"doi": None, "title": m.group(1).strip(), "access": "abstract only",
+                    "text": " ".join(body.split())[:4000], "extra": {}})
+    return out
 
 
 # channel -> (method, kwargs builder, parser, default limit)
@@ -192,7 +228,8 @@ def collate(per_set):
     for key, recs in per_set.items():
         channel, _, qset = key.partition("/")
         for r in recs:
-            tagged.append(dict(r, channel=channel, query_set=qset))
+            tagged.append(dict(r, channel=channel, query_set=qset,
+                               text=(r.get("text") or "")))
 
     unique, index = ident.dedupe_sources(tagged)
     for k, rec in unique.items():
