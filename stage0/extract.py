@@ -90,14 +90,22 @@ def verify_quote(quote, text):
       verified (elided)     -- every word appears in order, with material
                                omitted in between: the model dropped
                                parentheticals such as "(Hypothesis 1)" rather
-                               than inventing anything. Measured: this was 5 of
-                               7 apparent failures on the first real run.
+                               than inventing anything.
       NOT FOUND             -- the words do not appear in order. Reported, never
                                dropped: a model producing plausible unsourced
                                quotes is precisely what the reader must see.
 
     An elided quote is still a quote a reader can locate; a NOT FOUND one is a
     reason to distrust every field on that source.
+
+    Measured on the first real run, since the three states were added in
+    response to it rather than designed in advance. Of 7 quotes the original
+    whitespace-only check called failures: 2 were fully verbatim and had been
+    missed because of unicode punctuation, 1 was an elision, and 4 genuinely
+    did not appear in order. Across the whole 29-source dossier: 18 verified,
+    1 elided, 7 not found, 3 with no quote offered. The 4-to-1 ratio of
+    not-found to elided is the number that matters here, and it is why
+    not-found is reported as loudly as it is.
     """
     if not quote:
         return "no quote offered"
