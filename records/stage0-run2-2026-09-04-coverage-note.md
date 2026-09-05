@@ -24,9 +24,11 @@ Run 2026-09-04. Stage 0: retrieval only, no grades.
 
 3 source(s) were returned by more than one channel. Channels drawing on overlapping upstream corpora can still return near-disjoint sets, so this figure is measured per run rather than assumed (spec 58).
 
-## Query set overlap (spec 16)
+## Query set overlap, per record (spec 16)
 
 How much of the disconfirming set's yield was the supporting set's own results. A high figure means the channel was searched twice for the same thing, whatever the query said.
+
+**Read the per-work table under Source identity instead where it is present.** These record-level figures are inflated wherever a channel returned several copies of one work; they are what is computable before linkage has run. No threshold is applied to either table: see the note at the end of the per-work table.
 
 | Channel | Shared sources | Jaccard |
 |---|---|---|
@@ -34,8 +36,6 @@ How much of the disconfirming set's yield was the supporting set's own results. 
 | fasttrack | 5 | 0.152 |
 | scholargw | 2 | 0.074 |
 | scispace | 5 | 0.333 |
-
-**Arm overlap at or above 0.30 on: scispace.** Re-word the disconfirming query as the negated claim and re-run before treating this run's disconfirmation channel as searched.
 
 ## Access mix (spec 18)
 
@@ -65,6 +65,31 @@ Counts of *sources* above describe retrieval. Any statement about independent su
 - linked by title with no guard available: 0
 - title collisions rejected by the guard: 0
 - records with no DOI: 14; records with neither DOI nor title, so unlinkable: 0
+
+### Query set overlap, per work (spec 16)
+
+| Channel | Shared works | Jaccard |
+|---|---|---|
+| consensus | 3 | 0.176 |
+| fasttrack | 5 | 0.156 |
+| scholargw | 2 | 0.074 |
+| scispace | 2 | 0.286 |
+
+Works returned by both query sets:
+
+- campbell s law explains the replication crisis pre registration badges (0 DOIs)
+- pre analysis plans have limited upside especially where replications a (0 DOIs)
+- preregistration in practice a comparison of preregistered and non prer (2 DOIs)
+- replicability robustness and reproducibility in psychological science (1 DOI)
+- evaluating the replicability of social science experiments in nature a (1 DOI)
+- global burden of 369 diseases and injuries in 204 countries and territ (1 DOI)
+- a review of point cloud registration algorithms for mobile robotics (1 DOI)
+- small sample sizes reduce the replicability of task based fmri studies (1 DOI)
+- brain association studies in 2024 a systematic review of sample sizes  (1 DOI)
+- assessing preregistration deviations a comparative analysis of psychol (1 DOI)
+- does preregistration improve the credibility of research findings (6 DOIs)
+
+No cutoff is applied to these figures, deliberately. A threshold exists to trigger an action, and there is no validated action here: the only remedy previously prescribed — re-word the disconfirming query — is measurably ineffective on channels whose search is weakly sensitive to negation, where a correctly negated claim still retrieves the supporting set's results. The index is also coarse at these set sizes: with ten sources per query set one shared work moves it by about 0.07, so a two-decimal cutoff claims precision the measurement does not have. Read the named works above, compare the figure across runs of the same question, and treat a channel that keeps returning the same works for opposite queries as needing a different disconfirmation mechanism rather than a better sentence. Whether a gate belongs here at all is a spec 44 rubric-parameter question, and answering it needs evidence that high-overlap runs actually miss disconfirming evidence.
 
 Not covered: work identity is narrower than independence. Two different papers from one group on one dataset share data and authors and are not independent; no title-or-DOI linkage detects that.
 

@@ -211,7 +211,7 @@ def collate(per_set):
         "with_doi": sum(1 for r in unique.values() if r["doi_normalised"]),
         "multi_channel": sum(1 for ch in index.values() if len(ch) > 1),
         "per_channel_query_set": {k: len(v) for k, v in per_set.items()},
-        "query_set_overlap": query_set_overlap(per_set),
+        "query_set_overlap_records": query_set_overlap(per_set),
         "access_mix": {},
     }
     for r in unique.values():
@@ -266,6 +266,20 @@ def linkage_section(lk):
                 seen.add(sw["work_id"])
                 L += [f"- {(sw['title'] or sw['work_id'])[:70]} "
                       f"({len(sw['dois'])} DOI{'s' if len(sw['dois']) != 1 else ''})"]
+        L += ["",
+              "No cutoff is applied to these figures, deliberately. A threshold exists to "
+              "trigger an action, and there is no validated action here: the only remedy "
+              "previously prescribed — re-word the disconfirming query — is measurably "
+              "ineffective on channels whose search is weakly sensitive to negation, where "
+              "a correctly negated claim still retrieves the supporting set's results. The "
+              "index is also coarse at these set sizes: with ten sources per query set one "
+              "shared work moves it by about 0.07, so a two-decimal cutoff claims precision "
+              "the measurement does not have. Read the named works above, compare the "
+              "figure across runs of the same question, and treat a channel that keeps "
+              "returning the same works for opposite queries as needing a different "
+              "disconfirmation mechanism rather than a better sentence. Whether a gate "
+              "belongs here at all is a spec 44 rubric-parameter question, and answering it "
+              "needs evidence that high-overlap runs actually miss disconfirming evidence."]
     elif ovw.get("unavailable"):
         L += ["", f"Work-level query set overlap not computed: {ovw['unavailable']}"]
     L += ["",
@@ -298,22 +312,21 @@ def coverage_note(question, queries, stats, integrity, channels_used, unavailabl
           "drawing on overlapping upstream corpora can still return near-disjoint sets, so this "
           "figure is measured per run rather than assumed (spec 58).",
           ""]
-    ov = stats.get("query_set_overlap") or stats.get("arm_overlap") or {}
+    ov = (stats.get("query_set_overlap_records") or stats.get("query_set_overlap")
+          or stats.get("arm_overlap") or {})
     if ov:
-        L += ["## Query set overlap (spec 16)", "",
+        L += ["## Query set overlap, per record (spec 16)", "",
               "How much of the disconfirming set's yield was the supporting set's own "
               "results. A high figure means the channel was searched twice for the same "
               "thing, whatever the query said.", "",
+              "**Read the per-work table under Source identity instead where it is "
+              "present.** These record-level figures are inflated wherever a channel "
+              "returned several copies of one work; they are what is computable before "
+              "linkage has run. No threshold is applied to either table: see the note at "
+              "the end of the per-work table.", "",
               "| Channel | Shared sources | Jaccard |", "|---|---|---|"]
         for ch, v in sorted(ov.items()):
             L += [f"| {ch} | {v['shared']} | {v['jaccard']} |"]
-        hot = [ch for ch, v in ov.items() if (v["jaccard"] or 0) >= 0.30]
-        if hot:
-            L += ["", f"Record-level overlap at or above 0.30 on: {', '.join(sorted(hot))}. "
-                  "Read the work-level figure before acting on this: duplicate copies of one "
-                  "work raise the record-level number without the channel having searched "
-                  "twice for the same thing. The 0.30 line is an unvalidated convention, and "
-                  "at ten-source set sizes one shared source moves the index by about 0.07."]
         L += [""]
     L += ["## Access mix (spec 18)", ""]
     for a, n in sorted(stats["access_mix"].items()):
