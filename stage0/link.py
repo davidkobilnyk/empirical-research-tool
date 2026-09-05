@@ -277,6 +277,69 @@ def link(sources, meta, D):
     return sources, works, evidence
 
 
+def query_set_overlap_works(rundir, works, D):
+    """Cross-query-set overlap counted in WORKS, not records (spec 16).
+
+    The record-level figure computed during retrieval is inflated wherever a
+    channel returns several copies of one work: in one measured run SciSpace
+    showed 5 shared records at Jaccard 0.333, but four of those five were the
+    same study under arXiv, Authorea, repository and journal DOIs — 2 shared
+    works at 0.286. The record figure is what is computable before linkage; this
+    is the one to read.
+
+    Needs the run's payloads.json, so it is skipped for runs written before
+    payloads were persisted rather than silently reported as zero.
+    """
+    path = os.path.join(rundir, "payloads.json")
+    if not os.path.exists(path):
+        return {"unavailable": "no payloads.json in this run; cannot recount by work"}
+    spec = importlib.util.spec_from_file_location(
+        "retrieve", os.path.join(os.path.dirname(os.path.abspath(__file__)), "retrieve.py"))
+    R = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(R)
+    with open(path) as fh:
+        raw = json.load(fh)
+
+    doi2work, title2work = {}, {}
+    for wid, v in works.items():
+        for d in v["dois"]:
+            doi2work[d] = wid
+        if v.get("title"):
+            title2work[v["title"]] = wid
+
+    def works_of(recs):
+        out = set()
+        for r in recs:
+            d = D.normalize_doi(r.get("doi"))
+            t = D.normalize_title(r.get("title"))
+            wid = (doi2work.get(d) if d else None) or (title2work.get(t) if t else None)
+            out.add(wid or ("unmatched:" + (d or t or "")))
+        return out - {"unmatched:"}
+
+    parsed = {}
+    for key, payload in raw.items():
+        ch = key.partition("/")[0]
+        if ch in R.CHANNELS and "__error__" not in str(payload)[:40]:
+            parsed[key] = R.CHANNELS[ch][2](payload)
+
+    out = {}
+    for ch in {k.partition("/")[0] for k in parsed}:
+        sets = {k.partition("/")[2]: v for k, v in parsed.items() if k.partition("/")[0] == ch}
+        if len(sets) < 2:
+            continue
+        (_, ra), (_, rb) = sorted(sets.items())[:2]
+        wa, wb = works_of(ra), works_of(rb)
+        union = wa | wb
+        shared = sorted(wa & wb)
+        out[ch] = {"shared": len(shared),
+                   "jaccard": round(len(shared) / len(union), 3) if union else None,
+                   "shared_works": [{"work_id": s,
+                                     "title": (works.get(s) or {}).get("title"),
+                                     "dois": (works.get(s) or {}).get("dois", [])}
+                                    for s in shared]}
+    return out
+
+
 def summarise(sources, works, evidence, enrich_counts, mode="network"):
     """`mode` is recorded because offline linkage is strictly weaker, not merely
     faster: without registry enrichment there are no canonical titles, no authors
@@ -311,6 +374,7 @@ def run_link(rundir, email=None, net=True):
     meta, counts = enrich(sources, D, email=email, net=net)
     sources, works, evidence = link(sources, meta, D)
     stats = summarise(sources, works, evidence, counts, mode="network" if net else "offline")
+    stats["query_set_overlap_works"] = query_set_overlap_works(rundir, works, D)
 
     with open(os.path.join(rundir, "sources.json"), "w") as fh:
         json.dump(sources, fh, indent=1)

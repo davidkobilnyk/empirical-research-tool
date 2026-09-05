@@ -250,6 +250,24 @@ def linkage_section(lk):
               "across their copies. Under spec 24 an abstract-only source cannot be "
               "downgraded while X-2 takes the maximum per-source tier, so the least "
               "readable copy can set the tier. Grade these at work level."]
+    ovw = lk.get("query_set_overlap_works") or {}
+    if ovw and "unavailable" not in ovw:
+        L += ["", "### Query set overlap, per work (spec 16)", "",
+              "| Channel | Shared works | Jaccard |", "|---|---|---|"]
+        for ch, v in sorted(ovw.items()):
+            L += [f"| {ch} | {v['shared']} | {v['jaccard']} |"]
+        named = [(ch, sw) for ch, v in sorted(ovw.items()) for sw in v.get("shared_works", [])]
+        if named:
+            L += ["", "Works returned by both query sets:", ""]
+            seen = set()
+            for ch, sw in named:
+                if sw["work_id"] in seen:
+                    continue
+                seen.add(sw["work_id"])
+                L += [f"- {(sw['title'] or sw['work_id'])[:70]} "
+                      f"({len(sw['dois'])} DOI{'s' if len(sw['dois']) != 1 else ''})"]
+    elif ovw.get("unavailable"):
+        L += ["", f"Work-level query set overlap not computed: {ovw['unavailable']}"]
     L += ["",
           "Not covered: work identity is narrower than independence. Two different papers "
           "from one group on one dataset share data and authors and are not independent; "
@@ -291,9 +309,11 @@ def coverage_note(question, queries, stats, integrity, channels_used, unavailabl
             L += [f"| {ch} | {v['shared']} | {v['jaccard']} |"]
         hot = [ch for ch, v in ov.items() if (v["jaccard"] or 0) >= 0.30]
         if hot:
-            L += ["", f"**Arm overlap at or above 0.30 on: {', '.join(sorted(hot))}.** "
-                  "Re-word the disconfirming query as the negated claim and re-run before "
-                  "treating this run's disconfirmation channel as searched."]
+            L += ["", f"Record-level overlap at or above 0.30 on: {', '.join(sorted(hot))}. "
+                  "Read the work-level figure before acting on this: duplicate copies of one "
+                  "work raise the record-level number without the channel having searched "
+                  "twice for the same thing. The 0.30 line is an unvalidated convention, and "
+                  "at ten-source set sizes one shared source moves the index by about 0.07."]
         L += [""]
     L += ["## Access mix (spec 18)", ""]
     for a, n in sorted(stats["access_mix"].items()):
